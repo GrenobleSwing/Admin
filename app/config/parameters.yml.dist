@@ -1,0 +1,48 @@
+# This file is a "template" of what your parameters.yml file should look like
+# Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
+# http://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
+parameters:
+    database_host:     db
+    database_port:     3306
+    database_name:     gs_api
+    database_user:     root
+    database_password: password
+    # You should uncomment this if you want use pdo_sqlite
+    # database_path: "%kernel.root_dir%/data.db3"
+
+    # For doctrine/dbal >= 2.5
+    mysql_server_version: 5.6
+
+    mailer_transport:  smtp
+    mailer_auth_mode:  ~
+    mailer_host:       127.0.0.1
+    mailer_encryption: ~
+    mailer_port:       ~
+    mailer_user:       ~
+    mailer_password:   ~
+
+    # A secret key that's used to generate certain security-related tokens
+    secret:            ThisTokenIsNotSoSecretChangeIt
+
+    jwt_private_key_path: '%kernel.root_dir%/../var/jwt/private.pem' # ssh private key path
+    jwt_public_key_path:  '%kernel.root_dir%/../var/jwt/public.pem'  # ssh public key path
+    jwt_key_pass_phrase:  untruc                                     # ssh key pass phrase
+    jwt_token_ttl:        2592000  # 30 days
+
+    paypal_sandbox_client_id: 1234567890  # Client Id provided from developer.paypal.com
+    paypal_sandbox_secret: 1234567890     # Client Secret provided from developer.paypal.com
+    paypal_prod_client_id: 1234567890     # Client Id provided from developer.paypal.com
+    paypal_prod_secret: 1234567890        # Client Secret provided from developer.paypal.com
+
+    wkhtmltopdf.binary: /var/local/wkhtmltox/bin/wkhtmltopdf
+
+    admin_email: admin@test.com
+
+    return_url_success: 'http://test.inscriptions.grenobleswing.com/success.html'
+    return_url_cancelled: 'http://test.inscriptions.grenobleswing.com/cancelled.html'
+    return_url_rejected: 'http://test.inscriptions.grenobleswing.com/refused.html'
+    return_url_onhold: 'http://test.inscriptions.grenobleswing.com/waiting.html'
+
+    httpProtocol: http
+
+    vich_uri_prefix: /web

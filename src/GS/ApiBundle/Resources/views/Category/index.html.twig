@@ -1,0 +1,20 @@
+{% extends "GSApiBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    <h2>Liste des catégories</h2>
+
+    <ul>
+        {% for category in listCategories %}
+            <li>
+                <a href="{{ path('view_category', {'id': category.id}) }}">
+                    {{ category.name }}
+                </a>
+            </li>
+        {% else %}
+            <li>Pas (encore !) de catégories</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

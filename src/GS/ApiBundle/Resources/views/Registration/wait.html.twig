@@ -1,0 +1,23 @@
+{% extends "GSApiBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    <h2>Valider une inscription</h2>
+
+    <p>
+        Etes-vous certain de vouloir mettre l'inscription "{{ registration.displayName }}" en liste d'attente ?
+    </p>
+
+    <form action="{{ path('wait_registration', {'id': registration.id}) }}" method="post">
+        <a href="{{ path('view_topic', {'id': registration.topic.id}) }}" class="btn btn-default">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Retour au topic
+        </a>
+        {# Ici j'ai écrit le bouton de soumission à la main #}
+        <input type="submit" value="Mettre en liste d'attente" class="btn btn-danger" />
+        {# Ceci va générer le champ CSRF #}
+        {{ form_rest(form) }}
+    </form>
+
+{% endblock %}

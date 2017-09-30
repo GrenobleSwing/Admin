@@ -1,0 +1,26 @@
+{% extends "GSApiBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    <h2>{{ venue.name }}</h2>
+
+    {% import "GSApiBundle:Address:macros.html.twig" as macro %}
+    {{ macro.print_long(venue.address) }}
+
+    <p>
+        <a href="{{ path('index_venue') }}" class="btn btn-default">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Retour aux salles
+        </a>
+        <a href="{{ path('edit_venue', {'id': venue.id}) }}" class="btn btn-default">
+            <i class="glyphicon glyphicon-edit"></i>
+            Modifier la salle
+        </a>
+        <a href="{{ path('delete_venue', {'id': venue.id}) }}" class="btn btn-danger">
+            <i class="glyphicon glyphicon-trash"></i>
+            Supprimer la salle
+        </a>
+    </p>
+
+{% endblock %}

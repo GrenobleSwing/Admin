@@ -1,0 +1,47 @@
+{% extends "GSApiBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <style>
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    </style>
+{% endblock %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    <h2>{{ account.displayName }}</h2>
+
+    <p>
+        <a href="{{ path('homepage') }}" class="btn btn-default">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Retour à l'accueil
+        </a>
+        <a href="{{ path('edit_account', {'id': account.id}) }}" class="btn btn-default">
+            <i class="glyphicon glyphicon-edit"></i>
+            Modifier le profil
+        </a>
+        <a href="{{ path('edit_account_picture', {'id': account.id}) }}" class="btn btn-default">
+            <i class="glyphicon glyphicon-edit"></i>
+            Modifier l'image du profil
+        </a>
+    </p>
+
+    <a href="{{ vich_uploader_asset(account, 'imageFile') }}">
+        <img src="{{ vich_uploader_asset(account, 'imageFile') }}" alt="Photo" style="width:5cm;"/>
+    </a>
+
+    <h2>Email</h2>
+    {{ account.email }}
+
+    <h2>Téléphone</h2>
+    {{ phone_number_format(account.phoneNumber) }}
+
+    {% import "GSApiBundle:Address:macros.html.twig" as macro %}
+    {{ macro.print_long(account.address) }}
+
+{% endblock %}

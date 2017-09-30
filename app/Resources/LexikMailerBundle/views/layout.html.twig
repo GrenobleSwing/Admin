@@ -1,0 +1,31 @@
+{% extends "GSApiBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {% block content %}{% endblock %}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.29.0/codemirror.min.css">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.29.0/codemirror.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.29.0/mode/twig/twig.js"></script>
+
+    <script>
+        if ( $("#mailer_layout_translation_body").length ) {
+            var editor1 = CodeMirror.fromTextArea($("#mailer_layout_translation_body")[0], {
+                lineNumbers: true,
+                mode: "twig"
+            });
+        }
+        if ( $("#mailer_email_translation_body").length ) {
+            var editor2 = CodeMirror.fromTextArea($("#mailer_email_translation_body")[0], {
+                lineNumbers: true,
+                mode: "twig"
+            });
+        }
+    </script>
+{% endblock %}

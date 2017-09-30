@@ -1,0 +1,10 @@
+{% extends "GSApiBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    <h2>Editer une salle</h2>
+
+    {{ include("GSApiBundle:Venue:form.html.twig") }}
+
+{% endblock %}

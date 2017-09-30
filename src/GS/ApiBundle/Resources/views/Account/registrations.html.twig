@@ -1,0 +1,21 @@
+{% extends "GSApiBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    <h2>Liste de mes inscriptions</h2>
+
+    <ul>
+        {% for registration in listRegistrations %}
+            <li>
+                {{ registration.topic.title }}
+                <a href="{{ path('view_registration', {'id': registration.id}) }}" class="btn btn-default btn-xs">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Voir
+                </a>
+            </li>
+        {% else %}
+            <li>Pas (encore !) d'inscriptions</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

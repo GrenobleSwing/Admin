@@ -1,0 +1,44 @@
+{% extends "GSApiBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    <h2>{{ category.name }}</h2>
+
+    <p>
+        <a href="{{ path('view_activity', {'id': category.activity.id}) }}" class="btn btn-default">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Retour à l'activité
+        </a>
+        {% if category.activity.state == 'DRAFT' and is_granted("edit", category) or is_granted("ROLE_ADMIN") %}
+            <a href="{{ path('edit_category', {'id': category.id}) }}" class="btn btn-default">
+                <i class="glyphicon glyphicon-edit"></i>
+                Modifier la catégorie
+            </a>
+        {% endif %}
+        {% if category.activity.state == 'DRAFT' and is_granted("delete", category) or is_granted("ROLE_ADMIN") %}
+            <a href="{{ path('delete_category', {'id': category.id}) }}" class="btn btn-danger">
+                <i class="glyphicon glyphicon-trash"></i>
+                Supprimer la catégorie
+            </a>
+        {% endif %}
+    </p>
+
+    <h3>Prix</h3>
+    {{ category.price }} &euro;
+
+    <h3>Liste des réductions applicables :</h3>
+    <ul>
+        {% for discount in category.discounts %}
+            <li>
+                {{ discount.name }}
+                <a href="{{ path('view_discount', {'id': discount.id}) }}" class="btn btn-default btn-xs">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Voir
+                </a>
+            </li>
+        {% else %}
+            <li>Pas (encore !) de réductions possibles</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

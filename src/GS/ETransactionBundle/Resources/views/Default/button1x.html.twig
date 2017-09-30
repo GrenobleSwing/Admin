@@ -1,0 +1,12 @@
+
+{% import "GSETransactionBundle:Default:macros.html.twig" as macro %}
+
+{% set config = payment.environment.config %}
+{% set env = payment.environment %}
+
+<form class="form-inline" method="POST" action="{{- env.urlClassique -}}">
+    {{ macro.print(payment) }}
+    <input type="hidden" name="PBX_TOTAL" value="{{- payment.total -}}">
+    <input type="hidden" name="PBX_HMAC" value="{{- hmac -}}">
+    <button type="submit" class="btn btn-default">Payer</button>
+</form>

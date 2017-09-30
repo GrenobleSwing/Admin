@@ -1,0 +1,19 @@
+{% extends "GSApiBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    <h2>Ajouter une activité</h2>
+
+    {{ include("GSApiBundle:Activity:form.html.twig") }}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        $('.js-select-single').select2();
+        $('.js-select-multiple').select2();
+    </script>
+{% endblock %}

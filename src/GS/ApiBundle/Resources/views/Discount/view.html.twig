@@ -1,0 +1,34 @@
+{% extends "GSApiBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    <h2>{{ discount.name }}</h2>
+
+    <p>
+        <a href="{{ path('view_activity', {'id': discount.activity.id}) }}" class="btn btn-default">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Retour à l'activité
+        </a>
+        {% if discount.activity.state == 'DRAFT' and is_granted("edit", discount) or is_granted("ROLE_ADMIN") %}
+            <a href="{{ path('edit_discount', {'id': discount.id}) }}" class="btn btn-default">
+                <i class="glyphicon glyphicon-edit"></i>
+                Modifier la réduction
+            </a>
+        {% endif %}
+        {% if discount.activity.state == 'DRAFT' and is_granted("delete", discount) or is_granted("ROLE_ADMIN") %}
+            <a href="{{ path('delete_discount', {'id': discount.id}) }}" class="btn btn-danger">
+                <i class="glyphicon glyphicon-trash"></i>
+                Supprimer la réduction
+            </a>
+        {% endif %}
+    </p>
+
+    <h3>Montant</h3>
+    {% if discount.type == 'percent' %}
+        -{{ discount.value }}%
+    {% else %}
+        -{{ discount.value }}&euro;
+    {% endif %}
+
+{% endblock %}

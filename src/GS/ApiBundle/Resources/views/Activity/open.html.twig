@@ -1,0 +1,23 @@
+{% extends "GSApiBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    <h2>Ouvrir une activité</h2>
+
+    <p>
+        Etes-vous certain de vouloir ouvrir l'activité "{{ activity.title }}" ?
+    </p>
+
+    <form action="{{ path('open_activity', {'id': activity.id}) }}" method="post">
+        <a href="{{ path('view_activity', {'id': activity.id}) }}" class="btn btn-default">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Retour a l'activité
+        </a>
+        {# Ici j'ai écrit le bouton de soumission à la main #}
+        <input type="submit" value="Ouvrir" class="btn btn-danger" />
+        {# Ceci va générer le champ CSRF #}
+        {{ form_rest(form) }}
+    </form>
+
+{% endblock %}

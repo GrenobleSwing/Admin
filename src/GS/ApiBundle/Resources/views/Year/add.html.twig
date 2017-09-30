@@ -1,0 +1,24 @@
+{% extends "GSApiBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    <h2>Ajouter une année</h2>
+
+    {{ include("GSApiBundle:Year:form.html.twig") }}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        jQuery(document).ready(function() {
+            $('.js-datepicker').datepicker({
+                format: 'yyyy-mm-dd'
+            });
+
+            $('.js-select-multiple').select2();
+        });
+    </script>
+{% endblock %}

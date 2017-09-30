@@ -1,0 +1,64 @@
+
+default:
+    type:     annotation
+    resource: GS\ApiBundle\Controller\DefaultController
+
+account:
+    type:     annotation
+    resource: GS\ApiBundle\Controller\AccountController
+
+activity:
+    type:     annotation
+    resource: GS\ApiBundle\Controller\ActivityController
+
+category:
+    type:     annotation
+    resource: GS\ApiBundle\Controller\CategoryController
+
+certificate:
+    type:     annotation
+    resource: GS\ApiBundle\Controller\CertificateController
+
+discount:
+    type:     annotation
+    resource: GS\ApiBundle\Controller\DiscountController
+
+member:
+    type:     annotation
+    resource: GS\ApiBundle\Controller\MemberController
+
+registration:
+    type:     annotation
+    resource: GS\ApiBundle\Controller\RegistrationController
+
+society:
+    type:     annotation
+    resource: GS\ApiBundle\Controller\SocietyController
+
+topic:
+    type:     annotation
+    resource: GS\ApiBundle\Controller\TopicController
+
+venue:
+    type:     annotation
+    resource: GS\ApiBundle\Controller\VenueController
+
+year:
+    type:     annotation
+    resource: GS\ApiBundle\Controller\YearController
+
+payment:
+    type:     annotation
+    resource: GS\ApiBundle\Controller\PaymentController
+
+#paypal:
+#    resource: GS\ApiBundle\Controller\PaypalController
+#    type:     annotation
+
+invoice:
+    type:     annotation
+    resource: GS\ApiBundle\Controller\InvoiceController
+
+user:
+    type:     annotation
+    resource: GS\ApiBundle\Controller\UserController

@@ -1,0 +1,38 @@
+{% extends "GSApiBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    <h2>Liste des salles</h2>
+
+    <p>
+        <a href="{{ path('homepage') }}" class="btn btn-default">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Retour à l'accueil
+        </a>
+        <a href="{{ path('add_venue') }}" class="btn btn-default">
+            <i class="glyphicon glyphicon-plus"></i>
+            Ajouter une salle
+        </a>
+    </p>
+
+    <ul>
+        {% for venue in listVenues %}
+            <li>
+                {{ venue.name }}
+                <a href="{{ path('view_venue', {'id': venue.id}) }}" class="btn btn-default btn-xs">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Voir
+                </a>
+                <a href="{{ path('edit_venue', {'id': venue.id}) }}" class="btn btn-default btn-xs">
+                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Modifier
+                </a>
+                <a href="{{ path('delete_venue', {'id': venue.id}) }}" class="btn btn-danger btn-xs">
+                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Supprimer
+                </a>
+            </li>
+        {% else %}
+            <li>Pas (encore !) de salle</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

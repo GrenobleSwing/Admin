@@ -1,0 +1,23 @@
+{% extends "GSApiBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    <h2>Supprimer un paiement</h2>
+
+    <p>
+        Etes-vous certain de vouloir supprimer le paiement ?
+    </p>
+
+    <form action="{{ path('delete_payment', {'id': payment.id}) }}" method="post">
+        <a href="{{ path('view_payment', {'id': payment.id}) }}" class="btn btn-default">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            Retour au paiement
+        </a>
+        {# Ici j'ai écrit le bouton de soumission à la main #}
+        <input type="submit" value="Supprimer" class="btn btn-danger" />
+        {# Ceci va générer le champ CSRF #}
+        {{ form_rest(form) }}
+    </form>
+
+{% endblock %}

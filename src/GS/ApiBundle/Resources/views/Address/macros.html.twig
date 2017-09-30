@@ -1,0 +1,19 @@
+
+{% macro print_long(address) %}
+    <h3>Adresse</h3>
+    {{ address.street }}<br>
+    {{ address.zipCode }} {{ address.city }}<br>
+    {% if address.county %}
+        {{ address.county }}<br>
+    {% endif %}
+    {% if address.state %}
+    {{ address.state }}<br>
+    {% endif %}
+    {{ address.country }}<br>
+{% endmacro %}
+
+{% macro print_short(address) %}
+    {{- address.street }}
+    {{ address.zipCode }}
+    {{ address.city -}}
+{% endmacro %}

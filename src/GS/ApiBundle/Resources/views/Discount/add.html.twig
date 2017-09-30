@@ -1,0 +1,10 @@
+{% extends "GSApiBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    <h2>Ajouter une réduction</h2>
+
+    {{ include("GSApiBundle:Discount:form.html.twig") }}
+
+{% endblock %}

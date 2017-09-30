@@ -1,0 +1,20 @@
+{% extends "GSApiBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    <h2>Liste des profils</h2>
+
+    <ul>
+        {% for account in listAccounts %}
+            <li>
+                <a href="{{ path('view_account', {'id': account.id}) }}">
+                    {{ account.displayName }}
+                </a>
+            </li>
+        {% else %}
+            <li>Pas (encore !) de profils</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

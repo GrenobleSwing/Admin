@@ -1,0 +1,10 @@
+{% set address = society.address %}
+
+<h3>{{ society.name }}</h3>
+<p>
+    {{ include("GSApiBundle:Invoice:address.html.twig") }}
+    Tel: {{ phone_number_format(society.phoneNumber) }}<br>
+    Email: {{ society.email }}<br>
+    {{ society.taxInformation }}<br>
+    {{ society.vatInformation }}
+</p>

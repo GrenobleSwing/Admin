@@ -1,0 +1,22 @@
+{% extends "GSApiBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    <h2>Liste de mes paiements</h2>
+
+    <ul>
+        {% for payment in listPayments %}
+            <li>
+                {{ payment.date|date('d/m/Y', timezone="Europe/Paris") }} -
+                {{ payment.amount }} &euro;
+                <a href="{{ path('view_payment', {'id': payment.id}) }}" class="btn btn-default btn-xs">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Voir
+                </a>
+            </li>
+        {% else %}
+            <li>Pas (encore !) de paiements</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "GSApiBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    <h2>Liste des factures</h2>
+
+    <ul>
+        {% for invoice in listInvoices %}
+            <li>
+                <a href="{{ path('view_category', {'id': invoice.id}) }}" target="_blank">
+                    {{ invoice.id }}
+                </a>
+            </li>
+        {% else %}
+            <li>Pas (encore !) de factures</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

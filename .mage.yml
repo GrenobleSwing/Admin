@@ -1,0 +1,55 @@
+magephp:
+    log_dir: /path/for/logs
+    composer:
+        path: /path/to/composer.phar
+    environments:
+        production:
+            bin_path: '/usr/local/php5.6/bin:$PATH'
+            user: myuser
+            branch: master
+            host_path: /path/on/host
+            releases: 4
+            symfony: { env: 'prod' }
+            exclude:
+                - ./var/cache/*
+                - ./var/log/*
+                - ./web/app_dev.php
+            hosts:
+                - localhost
+            pre-deploy:
+                - git/update
+                - composer/self-update
+                - composer/install: { flags: '--no-dev', timeout: 240 }
+            on-deploy:
+                - fs/copy: { from: '/path/on/host/parameters_prod.yml', to: 'app/config/parameters.yml', flags: '' }
+                - symfony/cache-warmup
+                - symfony/assets-install
+                - symfony/assetic-dump
+            on-release:
+            post-release:
+            post-deploy:
+        test:
+            bin_path: '/usr/local/php5.6/bin:$PATH'
+            user: grenobler-dev
+            branch: master
+            host_path: /path/on/host
+            releases: 4
+            symfony: { env: 'dev' }
+            exclude:
+                - ./var/cache/*
+                - ./var/log/*
+            hosts:
+                - localhost
+            pre-deploy:
+                - git/update
+                - composer/self-update
+                - composer/install: { timeout: 240 }
+            on-deploy:
+                - fs/copy: { from: '/path/on/host/parameters_dev.yml', to: 'app/config/parameters.yml', flags: '' }
+                - fs/move: { from: 'web/app_dev.php', to: 'web/app.php' }
+                - symfony/cache-warmup
+                - symfony/assets-install
+                - symfony/assetic-dump
+            on-release:
+            post-release:
+            post-deploy:

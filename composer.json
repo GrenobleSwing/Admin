@@ -1,0 +1,85 @@
+{
+    "name": "jbilloud/gs",
+    "license": "proprietary",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        },
+        "classmap": [
+            "app/AppKernel.php",
+            "app/AppCache.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/GrenobleSwing/Magallanes"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "symfony/symfony": "^3.2",
+        "andres-montanez/magallanes": "dev-master",
+        "dizda/cloud-backup-bundle": "^3.5",
+        "doctrine/doctrine-bundle": "^1.6",
+        "doctrine/doctrine-cache-bundle": "^1.2",
+        "doctrine/doctrine-migrations-bundle": "^1.0",
+        "doctrine/orm": "^2.5",
+        "egeloen/ordered-form-bundle": "^2.0",
+        "egulias/email-validator": "~2.1",
+        "friendsofsymfony/jsrouting-bundle": "^1.6",
+        "friendsofsymfony/rest-bundle": "^2.0",
+        "friendsofsymfony/user-bundle": "~2.0",
+        "incenteev/composer-parameter-handler": "^2.0",
+        "jms/serializer-bundle": "^1.0",
+        "kmj/paypalbridgebundle": "dev-master",
+        "knplabs/knp-menu-bundle": "^2.0",
+        "knplabs/knp-snappy-bundle": "^1.4",
+        "lafourchette/switch-user-stateless-bundle": "^0.1",
+        "leafo/scssphp": "^0.6",
+        "lexik/jwt-authentication-bundle": "^2.0",
+        "lexik/mailer-bundle": "^2.0",
+        "lexik/paybox-bundle": "^2.0",
+        "michaeldegroot/doctrine-encrypt-bundle": "^3.0",
+        "misd/phone-number-bundle": "^1.0",
+        "nelmio/api-doc-bundle": "^2.0",
+        "nelmio/cors-bundle": "^1.5",
+        "patchwork/jsqueeze": "^2.0",
+        "paypal/rest-api-sdk-php": "^1.7",
+        "sensio/distribution-bundle": "^5.0",
+        "sensio/framework-extra-bundle": "^3.0.2",
+        "shapecode/hidden-entity-type-bundle": "^2.0",
+        "stof/doctrine-extensions-bundle": "^1.2",
+        "suncat/mobile-detect-bundle": "^1.0",
+        "symfony/assetic-bundle": "^2.8",
+        "symfony/monolog-bundle": "^3.0",
+        "symfony/polyfill-apcu": "^1.0",
+        "symfony/swiftmailer-bundle": "^2.3",
+        "vich/uploader-bundle": "~1.4",
+        "willdurand/hateoas-bundle": "^1.2"
+    },
+    "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^2.3",
+        "sensio/generator-bundle": "^3.0",
+        "symfony/phpunit-bridge": "^3.0",
+        "coresphere/console-bundle": "dev-master"
+    },
+    "extra": {
+        "symfony-app-dir": "app",
+        "symfony-bin-dir": "bin",
+        "symfony-var-dir": "var",
+        "symfony-web-dir": "web",
+        "symfony-tests-dir": "tests",
+        "symfony-assets-install": "relative",
+        "incenteev-parameters": {
+            "file": "app/config/parameters.yml"
+        },
+        "branch-alias": null
+    }
+}

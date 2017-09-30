@@ -1,0 +1,70 @@
+{% extends "GSApiBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    {% import "GSApiBundle:Registration:macros.html.twig" as macro %}
+    <h2>
+        {{ macro.print_state(registration) }}
+        {{ registration.topic.activity.title }}
+    </h2>
+
+    <h3>{{ registration.topic.title }}<br>
+        {{ registration.account.displayName }}</h3>
+
+    <p>
+        <a href="{{ path('view_topic', {'id': registration.topic.id}) }}" class="btn btn-default">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Retour au topic
+        </a>
+        {% if is_granted("edit", registration) %}
+            <a href="{{ path('edit_registration', {'id': registration.id}) }}" class="btn btn-default">
+                <i class="glyphicon glyphicon-edit"></i>
+                Modifier l'inscription
+            </a>
+        {% endif %}
+        {% if is_granted("delete", registration) %}
+            <a href="{{ path('delete_registration', {'id': registration.id}) }}" class="btn btn-danger">
+                <i class="glyphicon glyphicon-trash"></i>
+                Supprimer l'inscription
+            </a>
+        {% endif %}
+    </p>
+    <p>
+        {% if is_granted("validate", registration) %}
+            <a href="{{ path('validate_registration', {'id': registration.id}) }}" class="btn btn-default">
+                <i class="glyphicon glyphicon-check"></i>
+                Valider
+            </a>
+        {% endif %}
+        {% if is_granted("wait", registration) %}
+            <a href="{{ path('wait_registration', {'id': registration.id}) }}" class="btn btn-default">
+                <i class="glyphicon glyphicon-list"></i>
+                Mettre en liste d'attente
+            </a>
+        {% endif %}
+        {% if is_granted("cancel", registration) %}
+            <a href="{{ path('cancel_registration', {'id': registration.id}) }}" class="btn btn-default">
+                <i class="glyphicon glyphicon-remove"></i>
+                Annuler
+            </a>
+        {% endif %}
+    </p>
+
+    <h3>Status : {{ registration.state }}</h3>
+
+    {% if registration.topic.type == 'couple' %}
+        <h3>Role : {{ registration.role }}</h3>
+        {% if registration.withPartner %}
+            Partenaire :
+            {% if registration.partnerRegistration %}
+                {{ registration.partnerRegistration.account.displayName }}
+            {% else %}
+                {{ registration.partnerFirstName }}
+                {{ registration.partnerLastName }}
+                ({{- registration.partnerEmail -}})
+            {% endif %}
+        {% endif %}
+    {% endif %}
+
+{% endblock %}

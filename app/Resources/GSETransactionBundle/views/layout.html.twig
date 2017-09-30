@@ -1,0 +1,21 @@
+{% extends "GSApiBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {% block gs_etransaction_body %}{% endblock %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        jQuery(document).ready(function() {
+            $('.parent-collection').collection({
+                min: 1,
+                prefix: 'parent',
+                children: [{
+                    selector: '.child-collection'
+                }]
+            });
+        });
+    </script>
+{% endblock %}

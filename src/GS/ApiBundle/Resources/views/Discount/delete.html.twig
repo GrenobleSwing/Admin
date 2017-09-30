@@ -1,0 +1,23 @@
+{% extends "GSApiBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    <h2>Supprimer une réduction</h2>
+
+    <p>
+        Etes-vous certain de vouloir supprimer la réduction "{{ discount.name }}" ?
+    </p>
+
+    <form action="{{ path('delete_discount', {'id': discount.id}) }}" method="post">
+        <a href="{{ path('view_discount', {'id': discount.id}) }}" class="btn btn-default">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Retour à la réduction
+        </a>
+        {# Ici j'ai écrit le bouton de soumission à la main #}
+        <input type="submit" value="Supprimer" class="btn btn-danger" />
+        {# Ceci va générer le champ CSRF #}
+        {{ form_rest(form) }}
+    </form>
+
+{% endblock %}

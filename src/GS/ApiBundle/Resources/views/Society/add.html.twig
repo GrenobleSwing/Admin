@@ -1,0 +1,10 @@
+{% extends "GSApiBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    <h2>Créer la société</h2>
+
+    {{ include("GSApiBundle:Society:form.html.twig") }}
+
+{% endblock %}

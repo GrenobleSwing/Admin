@@ -1,0 +1,15 @@
+<div class="col-md-12 col-xs-12">
+    <table class="table table-bordered">
+        <tr>
+            <td style="width:50%; text-align: center; font-size: x-large; text-transform: uppercase;" colspan="2">Facture</td>
+        </tr>
+        <tr style="background-color: lightgray;">
+            <th style="width:50%; text-align: center;">Numéro</th>
+            <th style="width:50%; text-align: center;">Date</th>
+        </tr>
+        <tr>
+            <th style="width:50%; text-align: center;">{{ invoice.number }}</th>
+            <th style="width:50%; text-align: center;">{{ invoice.date|date("d/m/Y") }}</th>
+        </tr>
+    </table>
+</div>

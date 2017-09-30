@@ -1,0 +1,22 @@
+{% extends "GSApiBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    {% import "GSApiBundle:PaymentItem:macros.html.twig" as macro %}
+    <h3>Liste des inscriptions à payer :</h3>
+    <ul>
+        {% for item in payment.items %}
+            <li>
+                {{ macro.print(item) }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    Montant total : {{ payment.amount }} &euro;<br>
+
+    {{ buttonGenerator.createButton1x(transaction)|raw }}
+    {{ buttonGenerator.createButton2x(transaction)|raw }}
+    {{ buttonGenerator.createButton3x(transaction)|raw }}
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "GSApiBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    <h2>Editer un utilisateur</h2>
+
+    {{ include("GSApiBundle:User:form.html.twig") }}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        jQuery(document).ready(function() {
+            $('.js-select-multiple').select2();
+        });
+    </script>
+{% endblock %}

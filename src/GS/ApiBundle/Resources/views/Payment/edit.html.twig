@@ -1,0 +1,33 @@
+{% extends "GSApiBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    <h2>Editer un paiement</h2>
+
+    {{ include("GSApiBundle:Payment:form.html.twig") }}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        jQuery(document).ready(function() {
+            $('.js-datepicker').datepicker({
+                format: 'yyyy-mm-dd'
+            });
+
+            $('.js-collection').collection({
+                after_add: function(collection, element) {
+                    $('.js-select-single').select2();
+                }
+            });
+
+            $('.js-select-single').select2({
+                width: 'resolve'
+            });
+        });
+    </script>
+
+{% endblock %}

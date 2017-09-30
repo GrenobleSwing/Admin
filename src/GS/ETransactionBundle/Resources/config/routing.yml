@@ -1,0 +1,7 @@
+gse_transaction_config:
+    type:     annotation
+    resource: GS\ETransactionBundle\Controller\ConfigController
+
+gse_transaction_ipn:
+    type:     annotation
+    resource: GS\ETransactionBundle\Controller\IpnController

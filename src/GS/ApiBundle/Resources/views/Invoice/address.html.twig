@@ -1,0 +1,21 @@
+{% if address.street is not empty %}
+    {{ address.street }} <br>
+{% endif %}
+{% if address.zipCode is not empty %}
+    {{ address.zipCode }}
+{% endif %}
+{% if address.city is not empty %}
+    {{ address.city }}
+{% endif %}
+{% if address.zipCode is not empty or address.city is not empty %}
+    <br>
+{% endif %}
+{% if address.county is not empty %}
+    {{ address.county }} <br>
+{% endif %}
+{% if address.state is not empty %}
+    {{ address.state }} <br>
+{% endif %}
+{% if address.country is not empty %}
+    {{ address.country }} <br>
+{% endif %}

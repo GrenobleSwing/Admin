@@ -1,0 +1,10 @@
+{% extends "GSApiBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    <h2>Ajouter une inscription</h2>
+
+    {{ include("GSApiBundle:Registration:form.html.twig") }}
+
+{% endblock %}

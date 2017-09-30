@@ -1,0 +1,16 @@
+
+{% import "GSETransactionBundle:Default:macros.html.twig" as macro %}
+
+{% set config = payment.environment.config %}
+{% set env = payment.environment %}
+
+<form class="form-inline" method="POST" action="{{- env.urlClassique -}}">
+    {{ macro.print(payment) }}
+    {% set total1 = payment.total // 2 %}
+    {% set total2 = payment.total - total1 %}
+    <input type="hidden" name="PBX_TOTAL" value="{{- total1 -}}">
+    <input type="hidden" name="PBX_DATE1" value="{{- payment.time|date_modify('+1 month')|date("d/m/Y") -}}">
+    <input type="hidden" name="PBX_2MONT1" value="{{- total2 -}}">
+    <input type="hidden" name="PBX_HMAC" value="{{- hmac -}}">
+    <button type="submit" class="btn btn-default">Payer en 2 fois</button>
+</form>

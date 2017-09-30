@@ -1,0 +1,96 @@
+{% set items = invoice.payment.items %}
+{% set alreadyPaid = 0.0 %}
+
+<div class="row">
+    <div class="col-md-12 col-xs-12">
+        <table class="table table-bordered">
+            <thead>
+                <tr style="background-color: lightgray;">
+                    <th style="width:60%; text-align: center;">Description</th>
+                    <th style="width:10%; text-align: center;">Quantité</th>
+                    <th style="width:10%; text-align: center;">PU (HT)</th>
+                    <th style="width:10%; text-align: center;">Réduction</th>
+                    <th style="width:10%; text-align: center;">Total HT</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                    {% set price = item.registration.topic.category.price %}
+                    {% set alreadyPaid = alreadyPaid + item.amount - item.registration.amountPaid %}
+                    <tr style="text-align: right;">
+                        <td style="width:60%; text-align: left;">
+                            {{ item.registration.topic.title }}<br>
+                            {{ item.registration.topic.description }}
+                        </td>
+                        <td style="width:10%">1</td>
+                        <td style="width:10%">{{ price|number_format(2) }} &euro;</td>
+                        <td style="width:10%">
+                            {% set discount = item.registration.topic.category.price - item.amount %}
+                            {{ discount|number_format(2) }} &euro;
+                        </td>
+                        <td style="width:10%">{{ item.amount|number_format(2) }} &euro;</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8 col-xs-8">
+        <strong>Facture acquittée<br>
+        Mode de paiement :</strong>
+        {% if invoice.payment.type == "CASH" %}
+            liquide
+        {% elseif invoice.payment.type == "TRANSFER" %}
+            virement bancaire
+        {% elseif invoice.payment.type == "CHECK" %}
+            cheque
+        {% elseif invoice.payment.type == "PAYPAL" %}
+            Paypal
+        {% elseif invoice.payment.type == "CARD" %}
+            carte bancaire
+        {% endif %}
+    </div>
+    <div class="col-md-4 col-xs-4">
+        <table class="table table-bordered">
+            <thead>
+                <tr style="background-color: lightgray">
+                    <th style="width:33%; text-align: center;">Total HT</th>
+                    <th style="width:33%; text-align: center;">Total TTC</th>
+                    <th style="width:34%; text-align: center;">Déjà payé</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="text-align: right;">
+                    <td style="width:33%">{{ (invoice.payment.amount + alreadyPaid)|number_format(2) }} &euro;</td>
+                    <td style="width:33%">{{ (invoice.payment.amount + alreadyPaid)|number_format(2) }} &euro;</td>
+                    <td style="width:34%">{{ alreadyPaid|number_format(2) }} &euro;</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2 col-xs-2 col-md-offset-10 col-xs-offset-10">
+        <table class="table table-bordered">
+            <thead>
+                <tr style="background-color: lightgray;">
+                    <th style="text-align: center;">Net à payer</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="text-align: right;">
+                    <td>{{ invoice.payment.amount|number_format(2) }} &euro;</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4 col-xs-4 col-md-offset-8 col-xs-offset-8" style="text-align: center;">
+        TVA non applicable, art. 293 B du CGI
+    </div>
+</div>

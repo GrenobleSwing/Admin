@@ -1,0 +1,20 @@
+{% extends "GSApiBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    <h2>Liste des réductions</h2>
+
+    <ul>
+        {% for discount in listDiscounts %}
+            <li>
+                <a href="{{ path('view_discount', {'id': discount.id}) }}">
+                    {{ discount.name }}
+                </a>
+            </li>
+        {% else %}
+            <li>Pas (encore !) de réductions</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

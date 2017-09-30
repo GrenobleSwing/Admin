@@ -1,0 +1,19 @@
+
+{% macro print(payment) %}
+    {% set config = payment.environment.config %}
+    {% set env = payment.environment %}
+    <input type="hidden" name="PBX_SITE" value="{{- config.site -}}">
+    <input type="hidden" name="PBX_RANG" value="{{- config.rang -}}">
+    <input type="hidden" name="PBX_IDENTIFIANT" value="{{- config.identifiant -}}">
+    <input type="hidden" name="PBX_DEVISE" value="{{- config.devise -}}">
+    <input type="hidden" name="PBX_CMD" value="{{- payment.cmd -}}">
+    <input type="hidden" name="PBX_PORTEUR" value="{{- payment.porteur -}}">
+    <input type="hidden" name="PBX_TYPEPAIEMENT" value="CARTE">
+    <input type="hidden" name="PBX_REPONDRE_A" value="{{- payment.ipnUrl -}}">
+    <input type="hidden" name="PBX_ANNULE" value="{{- payment.urlAnnule -}}">
+    <input type="hidden" name="PBX_EFFECTUE" value="{{- payment.urlEffectue -}}">
+    <input type="hidden" name="PBX_REFUSE" value="{{- payment.urlRefuse -}}">
+    <input type="hidden" name="PBX_RETOUR" value="Mt:M;Ref:R;Auto:A;Erreur:E;sign:K">
+    <input type="hidden" name="PBX_HASH" value="SHA512">
+    <input type="hidden" name="PBX_TIME" value="{{- payment.time|date("c") -}}">
+{% endmacro %}

@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+  db:
+    image: mysql/mysql-server:5.6
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_ROOT_HOST=%
+
+  php:
+    build: .docker/php
+    volumes:
+      - .:/var/www/html
+    ports:
+      - 8080:80
+    environment:
+      - APACHE_LOG_DIR=/var/www/html/var/logs
+    links:
+      - db:db
+
+  myadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8081:80
+    links:
+      - db:db
+
+#  elk:
+#    build: .docker/elk
+#    ports:
+#      - 8082:80
+#    volumes:
+#      - .:/var/www/html
+#      - .docker/elk/logstash/logstash.conf:/etc/logstash/conf.d/logstash.conf
+#      - .docker/elk/logstash/patterns:/opt/logstash/patterns

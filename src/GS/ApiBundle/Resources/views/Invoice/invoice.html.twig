@@ -1,0 +1,21 @@
+{% extends "GSApiBundle:Invoice:layout.html.twig" %}
+
+{% block object %}
+    <strong>Objet :</strong> {{ invoice.payment.items[0].registration.topic.activity.title }}
+{% endblock %}
+
+{% block number %}
+    {{ include("GSApiBundle:Invoice:number.html.twig") }}
+{% endblock %}
+
+{% block society %}
+    {{ include("GSApiBundle:Invoice:society.html.twig") }}
+{% endblock %}
+
+{% block account %}
+    {{ include("GSApiBundle:Invoice:account.html.twig") }}
+{% endblock %}
+
+{% block items %}
+    {{ include("GSApiBundle:Invoice:items.html.twig") }}
+{% endblock %}

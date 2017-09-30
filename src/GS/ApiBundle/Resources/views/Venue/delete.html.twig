@@ -1,0 +1,23 @@
+{% extends "GSApiBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    <h2>Supprimer une salle</h2>
+
+    <p>
+        Etes-vous certain de vouloir supprimer la salle "{{ venue.name }}" ?
+    </p>
+
+    <form action="{{ path('delete_venue', {'id': venue.id}) }}" method="post">
+        <a href="{{ path('view_venue', {'id': venue.id}) }}" class="btn btn-default">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Retour à la salle
+        </a>
+        {# Ici j'ai écrit le bouton de soumission à la main #}
+        <input type="submit" value="Supprimer" class="btn btn-danger" />
+        {# Ceci va générer le champ CSRF #}
+        {{ form_rest(form) }}
+    </form>
+
+{% endblock %}
