@@ -5,7 +5,7 @@ magephp:
     environments:
         production:
             bin_path: '/usr/local/php5.6/bin:$PATH'
-            user: myuser
+            user: user
             branch: master
             host_path: /path/on/host
             releases: 4
@@ -22,6 +22,7 @@ magephp:
                 - composer/install: { flags: '--no-dev', timeout: 240 }
             on-deploy:
                 - fs/copy: { from: '/path/on/host/parameters_prod.yml', to: 'app/config/parameters.yml', flags: '' }
+                - symfony/cache-clear
                 - symfony/cache-warmup
                 - symfony/assets-install
                 - symfony/assetic-dump
@@ -30,7 +31,7 @@ magephp:
             post-deploy:
         test:
             bin_path: '/usr/local/php5.6/bin:$PATH'
-            user: grenobler-dev
+            user: user
             branch: master
             host_path: /path/on/host
             releases: 4
@@ -47,6 +48,7 @@ magephp:
             on-deploy:
                 - fs/copy: { from: '/path/on/host/parameters_dev.yml', to: 'app/config/parameters.yml', flags: '' }
                 - fs/move: { from: 'web/app_dev.php', to: 'web/app.php' }
+                - symfony/cache-clear
                 - symfony/cache-warmup
                 - symfony/assets-install
                 - symfony/assetic-dump
