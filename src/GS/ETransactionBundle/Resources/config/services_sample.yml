@@ -1,9 +1,0 @@
-parameters:
-    gse_transaction.sample_ipn_listener.class: GS\ETransactionBundle\EventListener\SampleIpnListener
-
-services:
-    gse_transaction.sample_ipn_listener:
-        class:     %gse_transaction.sample_ipn_listener.class%
-        arguments: [ %kernel.root_dir%, @filesystem ]
-        tags:
-            - { name: kernel.event_listener, event: gse_transaction.ipn.received, method: onIpnReceived }

@@ -20,6 +20,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/GrenobleSwing/Magallanes"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/GrenobleSwing/ETransactionBundle"
         }
     ],
     "require": {
@@ -36,6 +40,7 @@
         "friendsofsymfony/jsrouting-bundle": "^1.6",
         "friendsofsymfony/rest-bundle": "^2.0",
         "friendsofsymfony/user-bundle": "~2.0",
+        "gs/etransaction": "dev-master",
         "incenteev/composer-parameter-handler": "^2.0",
         "jms/serializer-bundle": "^1.0",
         "kmj/paypalbridgebundle": "dev-master",
