@@ -1,0 +1,43 @@
+{% extends "GSAdminBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    <h2>Editer un cours/niveau</h2>
+
+    {{ include("GSAdminBundle:Topic:form.html.twig") }}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        function enableDateTimePickers() {
+            $('.js-datepicker').datepicker({
+                format: 'yyyy-mm-dd'
+            });
+
+            $('.js-timepicker').timepicker({
+                timeFormat: 'HH:mm',
+                interval: 15,
+                dynamic: false,
+                dropdown: true,
+                scrollbar: true
+            });
+        }
+
+        jQuery(document).ready(function() {
+            $('.js-collection').collection({
+                after_add: function(collection, element) {
+                    enableDateTimePickers();
+                   return true;
+                }
+            });
+
+            enableDateTimePickers();
+
+            $('.js-select-multiple').select2();
+        });
+    </script>
+{% endblock %}

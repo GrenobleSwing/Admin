@@ -1,0 +1,66 @@
+{% extends "GSAdminBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    <h2>Liste de mes années</h2>
+
+    {% import "GSAdminBundle:Year:macros.html.twig" as macro_year %}
+    <ul>
+        {% for year in listYears %}
+            <li>
+                <a href="{{ path('gsadmin_view_year', {'id': year.id}) }}">
+                    {{ macro_year.print_title(year) }}
+                </a>
+            </li>
+        {% else %}
+            <li>Pas (encore !) d'année</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Liste de mes activités</h2>
+
+    {% import "GSAdminBundle:Activity:macros.html.twig" as macro_activity %}
+    <ul>
+        {% for activity in listActivities %}
+            <li>
+                <a href="{{ path('gsadmin_view_activity', {'id': activity.id}) }}">
+                    {{ macro_activity.print_title(activity) }}
+                </a>
+            </li>
+        {% else %}
+            <li>Pas (encore !) d'activités</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Liste de mes topics</h2>
+
+    {% import "GSAdminBundle:Topic:macros.html.twig" as macro_topic %}
+    <ul>
+        {% for topic in listTopics %}
+            <li>
+                <a href="{{ path('gsadmin_view_topic', {'id': topic.id}) }}">
+                    {{ macro_topic.print_title(topic) }}
+                </a>
+            </li>
+        {% else %}
+            <li>Pas (encore !) de topics</li>
+        {% endfor %}
+    </ul>
+
+    {#<h2>Liste des topics ouverts</h2>
+
+    <ul>
+        {% for topic in listTopics %}
+            <li>
+                {{ topic.title }}
+                <a href="{{ path('gsadmin_add_registration', {'id': topic.id}) }}" class="btn btn-default btn-xs">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> S'inscrire
+                </a>
+            </li>
+        {% else %}
+            <li>Pas (encore !) de topics</li>
+        {% endfor %}
+    </ul>#}
+
+{% endblock %}

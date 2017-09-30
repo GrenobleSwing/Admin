@@ -43,7 +43,7 @@ twig:
     strict_variables: "%kernel.debug%"
     form_themes:
         - 'bootstrap_3_layout.html.twig'
-        - 'GSApiBundle::jquery.collection.html.twig'
+        - 'GSAdminBundle::jquery.collection.html.twig'
         - 'VichUploaderBundle:Form:fields.html.twig'
         # - 'bootstrap_3_horizontal_layout.html.twig'
 
@@ -104,16 +104,16 @@ fos_rest:
 fos_user:
     db_driver: orm
     firewall_name: main
-    user_class: GS\ApiBundle\Entity\User
+    user_class: GS\StructureBundle\Entity\User
     from_email:
         address: "%mailer_user%"
         sender_name: "%mailer_user%"
     registration:
         form:
-            type: GS\ApiBundle\Form\Type\UserRegistrationType
+            type: GS\StructureBundle\Form\Type\UserRegistrationType
     profile:
         form:
-            type: GS\ApiBundle\Form\Type\UserProfileType
+            type: GS\StructureBundle\Form\Type\UserProfileType
 
 kmj_pay_pal_bridge:
     environment: sandbox

@@ -1,0 +1,10 @@
+{% extends "GSAdminBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    <h2>Ajouter une salle</h2>
+
+    {{ include("GSAdminBundle:Venue:form.html.twig") }}
+
+{% endblock %}

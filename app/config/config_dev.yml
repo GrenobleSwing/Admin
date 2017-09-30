@@ -8,13 +8,13 @@ framework:
     profiler:
         only_exceptions: false
         matcher:
-            service: gsapi.profiler.admin.matcher
+            service: gsadmin.profiler.admin.matcher
 
 web_profiler:
     toolbar: true
     intercept_redirects: true
 
-gs_api:
+gs_admin:
     doctrine_table_prefix: "test_api_"
 
 monolog:

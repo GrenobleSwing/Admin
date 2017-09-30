@@ -1,0 +1,88 @@
+{% extends "GSAdminBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    <h2>Liste des paiements</h2>
+
+    <table id="gs_table" class="table table-striped table-hover display nowrap" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Actions</th>
+                <th>Identité</th>
+                <th>Date</th>
+                <th>Montant</th>
+            </tr>
+        <thead>
+        <tfoot>
+            <tr>
+                <th>Actions</th>
+                <th>Identité</th>
+                <th>Date</th>
+                <th>Montant</th>
+            </tr>
+        </tfoot>
+    </table>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        $(document).ready(function () {
+            // Setup - add a text input to each footer cell
+            $('#gs_table tfoot th').each(function () {
+                var title = $(this).text();
+                $(this).html('<input type="text" placeholder="Search ' + title + '" />');
+            });
+
+            // DataTable
+            var table = $('#gs_table').DataTable({
+                "dom": 'Blfrtip',
+                "scrollX": true,
+                "ajax": {
+                    "url": "{{ path('gsadmin_index_payment_json', {'state': state}) }}",
+                    "dataSrc": ''
+                },
+                "columns": [
+                    {
+                        "data": null,
+                        "render": function ( data, type, full, meta ) {
+                            return '<a href="' +
+                                    Routing.generate('view_payment', { 'id': full.id }) +
+                                    '" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="Voir">' +
+                                    '<i class="glyphicon glyphicon-search"></i>' +
+                                    '</a>';
+                        }
+                    },
+                    { "data": 'account.displayName' },
+                    { "data": 'date' },
+                    {
+                        "data": null,
+                        "render": function ( data, type, full, meta ) {
+                            return full.amount + '&euro;';
+                        }
+                    }
+                ],
+                "buttons": [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+
+            // Apply the search
+            table.columns().every(function () {
+                var that = this;
+
+                $('input', this.footer()).on('keyup change', function () {
+                    if (that.search() !== this.value) {
+                        that
+                            .search(this.value)
+                            .draw();
+                    }
+                });
+            });
+
+        });
+    </script>
+{% endblock %}

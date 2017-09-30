@@ -7,7 +7,7 @@ imports:
 #        result_cache_driver: apc
 #        query_cache_driver: apc
 
-gs_api:
+gs_admin:
     doctrine_table_prefix: "gs_api_"
 
 monolog:

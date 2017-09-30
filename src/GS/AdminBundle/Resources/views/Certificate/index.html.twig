@@ -1,0 +1,38 @@
+{% extends "GSAdminBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    <h2>Liste des justificatifs</h2>
+
+    <p>
+        <a href="{{ path('homepage') }}" class="btn btn-default">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Retour à l'accueil
+        </a>
+        <a href="{{ path('gsadmin_add_certificate') }}" class="btn btn-default">
+            <i class="glyphicon glyphicon-plus"></i>
+            Ajouter un justificatif
+        </a>
+    </p>
+
+    <ul>
+        {% for certificate in listCertificates %}
+            <li>
+                {{ certificate.display }}
+                <a href="{{ path('gsadmin_view_certificate', {'id': certificate.id}) }}" class="btn btn-default btn-xs">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Voir
+                </a>
+                <a href="{{ path('gsadmin_edit_certificate', {'id': certificate.id}) }}" class="btn btn-default btn-xs">
+                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Modifier
+                </a>
+                <a href="{{ path('gsadmin_delete_certificate', {'id': certificate.id}) }}" class="btn btn-danger btn-xs">
+                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Supprimer
+                </a>
+            </li>
+        {% else %}
+            <li>Pas (encore !) de justificatifs</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

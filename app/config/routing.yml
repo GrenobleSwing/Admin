@@ -1,3 +1,7 @@
+#gs_structure:
+#    resource: "@GSStructureBundle/Resources/config/routing.yml"
+#    prefix:   /
+
 gs_e_transaction:
     resource: "@GSETransactionBundle/Resources/config/routing.yml"
     prefix:   /etrans
@@ -38,6 +42,6 @@ LexikMailerBundle:
     prefix:   /templates
     schemes: ['%httpProtocol%']
 
-gsapi:
-    resource: "@GSApiBundle/Resources/config/routing.yml"
+gsadmin:
+    resource: "@GSAdminBundle/Resources/config/routing.yml"
     schemes: ['%httpProtocol%']

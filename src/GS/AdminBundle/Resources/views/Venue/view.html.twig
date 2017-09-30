@@ -1,0 +1,26 @@
+{% extends "GSAdminBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    <h2>{{ venue.name }}</h2>
+
+    {% import "GSAdminBundle:Address:macros.html.twig" as macro %}
+    {{ macro.print_long(venue.address) }}
+
+    <p>
+        <a href="{{ path('gsadmin_index_venue') }}" class="btn btn-default">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Retour aux salles
+        </a>
+        <a href="{{ path('gsadmin_edit_venue', {'id': venue.id}) }}" class="btn btn-default">
+            <i class="glyphicon glyphicon-edit"></i>
+            Modifier la salle
+        </a>
+        <a href="{{ path('gsadmin_delete_venue', {'id': venue.id}) }}" class="btn btn-danger">
+            <i class="glyphicon glyphicon-trash"></i>
+            Supprimer la salle
+        </a>
+    </p>
+
+{% endblock %}

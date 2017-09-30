@@ -33,8 +33,9 @@ class AppKernel extends Kernel
             new Shapecode\Bundle\HiddenEntityTypeBundle\ShapecodeHiddenEntityTypeBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
-            new GS\ApiBundle\GSApiBundle(),
+            new GS\AdminBundle\GSAdminBundle(),
             new GS\ETransactionBundle\GSETransactionBundle(),
+            new GS\StructureBundle\GSStructureBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

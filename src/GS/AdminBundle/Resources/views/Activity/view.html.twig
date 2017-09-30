@@ -1,0 +1,254 @@
+{% extends "GSAdminBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    {% import "GSAdminBundle:Activity:macros.html.twig" as macro %}
+    <h2>
+        {{ macro.print_title(activity) }}
+    </h2>
+
+    <p>
+        <a href="{{ path('gsadmin_view_year', {'id': activity.year.id}) }}" class="btn btn-default">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            Retour à l'année
+        </a>
+        {% if is_granted("open", activity) %}
+            <a href="{{ path('gsadmin_open_activity', {'id': activity.id}) }}" class="btn btn-default">
+                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                Ouvrir l'activité
+            </a>
+        {% endif %}
+        {% if is_granted("close", activity) %}
+            <a href="{{ path('gsadmin_close_activity', {'id': activity.id}) }}" class="btn btn-default">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                Clore l'activité
+            </a>
+        {% endif %}
+        {% if is_granted("edit", activity) %}
+            <a href="{{ path('gsadmin_edit_activity', {'id': activity.id}) }}" class="btn btn-default">
+                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                Modifier l'activité
+            </a>
+        {% endif %}
+        {% if is_granted("delete", activity) %}
+            <a href="{{ path('gsadmin_delete_activity', {'id': activity.id}) }}" class="btn btn-danger">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                Supprimer l'activité
+            </a>
+        {% endif %}
+    </p>
+    <p>
+        {% if is_granted("add_topic", activity) %}
+            <a href="{{ path('gsadmin_add_topic', {'id': activity.id}) }}" class="btn btn-default">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                Ajouter un cours/niveau
+            </a>
+        {% endif %}
+        {% if is_granted("add_category", activity) %}
+            <a href="{{ path('gsadmin_add_category', {'id': activity.id}) }}" class="btn btn-default">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                Ajouter une catégorie
+            </a>
+        {% endif %}
+        {% if is_granted("add_discount", activity) %}
+            <a href="{{ path('gsadmin_add_discount', {'id': activity.id}) }}" class="btn btn-default">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                Ajouter une réduction
+            </a>
+        {% endif %}
+    </p>
+
+    <h3>Description</h3>
+    <div class="well">
+        {{ activity.description }}
+    </div>
+
+    {% import "GSAdminBundle:Topic:macros.html.twig" as macro_topic %}
+    <h3>Liste des cours/niveaux :</h3>
+    <ul>
+        {% for topic in activity.topics %}
+            <li>
+                {{ macro_topic.print_title(topic) }}
+                {% if topic not in user_topics %}
+                    <a href="{{ path('gsadmin_add_registration', {'id': topic.id}) }}" class="btn btn-default btn-xs">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> S'inscrire
+                    </a>
+                {% else %}
+                    (déja inscrit)
+                {% endif %}
+                <a href="{{ path('gsadmin_view_topic', {'id': topic.id}) }}" class="btn btn-default btn-xs"
+                       data-toggle="tooltip" data-placement="top" title="Voir">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                </a>
+
+                {% if is_granted("open", topic) %}
+                    <a href="{{ path('gsadmin_open_topic', {'id': topic.id}) }}" class="btn btn-default btn-xs"
+                       data-toggle="tooltip" data-placement="top" title="Ouvrir le topic">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    </a>
+                {% endif %}
+                {% if is_granted("close", topic) %}
+                    <a href="{{ path('gsadmin_close_topic', {'id': topic.id}) }}" class="btn btn-default btn-xs"
+                       data-toggle="tooltip" data-placement="top" title="Clore le topic">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </a>
+                {% endif %}
+                {% if is_granted("edit", topic) %}
+                    <a href="{{ path('gsadmin_edit_topic', {'id': topic.id}) }}" class="btn btn-default btn-xs"
+                       data-toggle="tooltip" data-placement="top" title="Modifier le topic">
+                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                    </a>
+                {% endif %}
+                {% if is_granted("delete", topic) %}
+                    <a href="{{ path('gsadmin_delete_topic', {'id': topic.id}) }}" class="btn btn-danger btn-xs"
+                       data-toggle="tooltip" data-placement="top" title="Supprimer le topic">
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                    </a>
+                {% endif %}
+
+            </li>
+        {% else %}
+            <li>Pas (encore !) de cours/niveaux</li>
+        {% endfor %}
+
+        {% if is_granted("add_topic", activity) %}
+            <li>
+                <a href="{{ path('gsadmin_add_topic', {'id': activity.id}) }}" class="btn btn-default btn-xs">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    Ajouter un cours/niveau
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+
+    {% if is_granted("edit", activity) %}
+        <h3>Liste des catégories :</h3>
+        <ul>
+            {% for category in activity.categories %}
+                <li>
+                    {{ category.name }}
+                    <a href="{{ path('gsadmin_view_category', {'id': category.id}) }}" class="btn btn-default btn-xs"
+                            data-toggle="tooltip" data-placement="top" title="Voir">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    </a>
+
+                    {% if is_granted("edit", activity) %}
+                        <a href="{{ path('gsadmin_edit_category', {'id': category.id}) }}" class="btn btn-default btn-xs"
+                            data-toggle="tooltip" data-placement="top" title="Modifier">
+                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                        </a>
+                    {% endif %}
+                </li>
+            {% else %}
+                <li>Pas (encore !) de catégories</li>
+            {% endfor %}
+
+            {% if is_granted("add_category", activity) %}
+                <li>
+                    <a href="{{ path('gsadmin_add_category', {'id': activity.id}) }}" class="btn btn-default btn-xs">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        Ajouter une catégorie
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+
+        <h3>Liste des réductions :</h3>
+        <ul>
+            {% for discount in activity.discounts %}
+                <li>
+                    {{ discount.name }}
+                    <a href="{{ path('gsadmin_view_discount', {'id': discount.id}) }}" class="btn btn-default btn-xs"
+                            data-toggle="tooltip" data-placement="top" title="Voir">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    </a>
+
+                    {% if is_granted("edit", activity) %}
+                        <a href="{{ path('gsadmin_edit_discount', {'id': discount.id}) }}" class="btn btn-default btn-xs"
+                            data-toggle="tooltip" data-placement="top" title="Modifier">
+                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                        </a>
+                    {% endif %}
+                </li>
+            {% else %}
+                <li>Pas (encore !) de réductions</li>
+            {% endfor %}
+
+            {% if is_granted("add_discount", activity) %}
+                <li>
+                    <a href="{{ path('gsadmin_add_discount', {'id': activity.id}) }}" class="btn btn-default btn-xs">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        Ajouter une réduction
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    {% endif %}
+
+    {% if is_granted("edit", activity) %}
+        <h3>Liste des actions envoyant des emails :</h3>
+        {% set i = 0 %}
+        {% for action in activity.triggeredEmails %}
+            {% if i > 0 %}
+                -
+            {% endif %}
+            {% set i = i + 1 %}
+
+            {% if action == 'validate' %}
+                Validation
+            {% elseif action == 'wait' %}
+                Mise en liste d'attente
+            {% elseif action == 'create' %}
+                Soumission
+            {% elseif action == 'cancel' %}
+                Annulation
+            {% endif %}
+        {% endfor %}
+
+        <h3>Templates pour les emails</h3>
+        Layout des emails (ne pas modifier sauf si vous savez ce que vous faites)
+        <a href="{{ path('lexik_mailer.layout_edit', {'layoutId': activity.emailLayout.id}) }}" class="btn btn-default btn-xs"
+                data-toggle="tooltip" data-placement="top" title="Editer">
+            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+            Modifier
+        </a>
+        <br>
+        Liste des templates (à personnaliser selon vos besoins) :
+        <ul>
+            {% for template in activity.emailTemplates %}
+                <li>
+                    {% if template.action == 'validate' %}
+                        Validation
+                    {% elseif template.action == 'wait' %}
+                        Mise en liste d'attente
+                    {% elseif template.action == 'create' %}
+                        Soumission
+                    {% elseif template.action == 'cancel' %}
+                        Annulation
+                    {% endif %}
+                    <a href="{{ path('lexik_mailer.email_edit', {'emailId': template.emailTemplate.id}) }}" class="btn btn-default btn-xs"
+                            data-toggle="tooltip" data-placement="top" title="Editer">
+                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                        Modifier
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if is_granted("edit", activity) %}
+        <h3>Liste des admins :</h3>
+        {{ activity.owners|join(', ') }}
+    {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        $(function () {
+          $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+{% endblock %}

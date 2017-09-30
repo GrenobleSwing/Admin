@@ -1,0 +1,60 @@
+
+default:
+    type:     annotation
+    resource: GS\AdminBundle\Controller\DefaultController
+
+account:
+    type:     annotation
+    resource: GS\AdminBundle\Controller\AccountController
+
+activity:
+    type:     annotation
+    resource: GS\AdminBundle\Controller\ActivityController
+
+category:
+    type:     annotation
+    resource: GS\AdminBundle\Controller\CategoryController
+
+certificate:
+    type:     annotation
+    resource: GS\AdminBundle\Controller\CertificateController
+
+discount:
+    type:     annotation
+    resource: GS\AdminBundle\Controller\DiscountController
+
+member:
+    type:     annotation
+    resource: GS\AdminBundle\Controller\MemberController
+
+registration:
+    type:     annotation
+    resource: GS\AdminBundle\Controller\RegistrationController
+
+society:
+    type:     annotation
+    resource: GS\AdminBundle\Controller\SocietyController
+
+topic:
+    type:     annotation
+    resource: GS\AdminBundle\Controller\TopicController
+
+venue:
+    type:     annotation
+    resource: GS\AdminBundle\Controller\VenueController
+
+year:
+    type:     annotation
+    resource: GS\AdminBundle\Controller\YearController
+
+payment:
+    type:     annotation
+    resource: GS\AdminBundle\Controller\PaymentController
+
+invoice:
+    type:     annotation
+    resource: GS\AdminBundle\Controller\InvoiceController
+
+user:
+    type:     annotation
+    resource: GS\AdminBundle\Controller\UserController

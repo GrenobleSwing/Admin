@@ -1,0 +1,21 @@
+{% extends "GSAdminBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    <h2>Liste des cours/niveaux</h2>
+
+    {% import "GSAdminBundle:Topic:macros.html.twig" as macro %}
+    <ul>
+        {% for topic in listTopics %}
+            <li>
+                <a href="{{ path('gsadmin_view_topic', {'id': topic.id}) }}">
+                    {{ macro.print_title(topic) }}
+                </a>
+            </li>
+        {% else %}
+            <li>Pas (encore !) de cours/niveaux</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

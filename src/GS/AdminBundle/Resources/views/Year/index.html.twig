@@ -1,0 +1,21 @@
+{% extends "GSAdminBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    <h2>Liste des années</h2>
+
+    {% import "GSAdminBundle:Year:macros.html.twig" as macro %}
+    <ul>
+        {% for year in listYears %}
+            <li>
+                <a href="{{ path('gsadmin_view_year', {'id': year.id}) }}">
+                    {{ macro.print_title(year) }}
+                </a>
+            </li>
+        {% else %}
+            <li>Pas (encore !) d'année</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
