@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7f033540e813e8e108383eafac0526e7",
+    "content-hash": "7f89b47a47bd0a94f68ef8643cc8ac0a",
     "packages": [
         {
             "name": "andres-montanez/magallanes",
@@ -1486,107 +1486,6 @@
             "time": "2017-08-25T15:21:42+00:00"
         },
         {
-            "name": "friendsofsymfony/rest-bundle",
-            "version": "2.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/FriendsOfSymfony/FOSRestBundle.git",
-                "reference": "d62a6c0f4bc699f899865d7e7bc7a4186aef9a86"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/d62a6c0f4bc699f899865d7e7bc7a4186aef9a86",
-                "reference": "d62a6c0f4bc699f899865d7e7bc7a4186aef9a86",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/inflector": "^1.0",
-                "php": "^5.5.9|~7.0",
-                "psr/log": "^1.0",
-                "symfony/config": "^2.7|^3.0",
-                "symfony/debug": "^2.7|^3.0",
-                "symfony/dependency-injection": "^2.7|^3.0",
-                "symfony/event-dispatcher": "^2.7|^3.0",
-                "symfony/finder": "^2.7|^3.0",
-                "symfony/framework-bundle": "^2.7|^3.0",
-                "symfony/http-foundation": "^2.7|^3.0",
-                "symfony/http-kernel": "^2.7|^3.0",
-                "symfony/routing": "^2.7|^3.0",
-                "symfony/security-core": "^2.7|^3.0",
-                "symfony/templating": "^2.7|^3.0",
-                "willdurand/jsonp-callback-validator": "^1.0",
-                "willdurand/negotiation": "^2.0"
-            },
-            "conflict": {
-                "jms/serializer": "1.3.0",
-                "sensio/framework-extra-bundle": "<3.0.13"
-            },
-            "require-dev": {
-                "jms/serializer-bundle": "^1.0",
-                "phpoption/phpoption": "^1.1",
-                "psr/http-message": "^1.0",
-                "sensio/framework-extra-bundle": "^3.0.13",
-                "symfony/asset": "^2.7|^3.0",
-                "symfony/browser-kit": "^2.7|^3.0",
-                "symfony/css-selector": "^2.7|^3.0",
-                "symfony/dependency-injection": "^2.7|^3.0",
-                "symfony/expression-language": "~2.7|^3.0",
-                "symfony/form": "^2.7|^3.0",
-                "symfony/phpunit-bridge": "^3.2",
-                "symfony/security-bundle": "^2.7|^3.0",
-                "symfony/serializer": "^2.7.11|^3.0.4",
-                "symfony/twig-bundle": "^2.7|^3.0",
-                "symfony/validator": "^2.7|^3.0",
-                "symfony/web-profiler-bundle": "^2.7|^3.0",
-                "symfony/yaml": "^2.7|^3.0"
-            },
-            "suggest": {
-                "jms/serializer-bundle": "Add support for advanced serialization capabilities, recommended, requires ^1.0",
-                "sensio/framework-extra-bundle": "Add support for route annotations and the view response listener, requires ^3.0",
-                "symfony/expression-language": "Add support for using the expression language in the routing, requires ^2.7|^3.0",
-                "symfony/serializer": "Add support for basic serialization capabilities and xml decoding, requires ^2.7|^3.0",
-                "symfony/validator": "Add support for validation capabilities in the ParamFetcher, requires ^2.7|^3.0"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.2-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "FOS\\RestBundle\\": ""
-                },
-                "exclude-from-classmap": [
-                    "Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Lukas Kahwe Smith",
-                    "email": "smith@pooteeweet.org"
-                },
-                {
-                    "name": "FriendsOfSymfony Community",
-                    "homepage": "https://github.com/friendsofsymfony/FOSRestBundle/contributors"
-                },
-                {
-                    "name": "Konstantin Kudryashov",
-                    "email": "ever.zet@gmail.com"
-                }
-            ],
-            "description": "This Bundle provides various tools to rapidly develop RESTful API's with Symfony",
-            "homepage": "http://friendsofsymfony.github.com",
-            "keywords": [
-                "rest"
-            ],
-            "time": "2017-04-06T12:55:03+00:00"
-        },
-        {
             "name": "friendsofsymfony/user-bundle",
             "version": "v2.0.1",
             "source": {
@@ -1981,6 +1880,60 @@
             "time": "2017-10-01T06:28:18+00:00"
         },
         {
+            "name": "gs/toolbox",
+            "version": "dev-master",
+            "target-dir": "GS/ToolboxBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GrenobleSwing/ToolboxBundle.git",
+                "reference": "6e77dc9c757e05b4946cc079a583c405eb06d811"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GrenobleSwing/ToolboxBundle/zipball/6e77dc9c757e05b4946cc079a583c405eb06d811",
+                "reference": "6e77dc9c757e05b4946cc079a583c405eb06d811",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/doctrine-bundle": "^1.6",
+                "doctrine/doctrine-cache-bundle": "^1.2",
+                "doctrine/orm": "^2.5",
+                "friendsofsymfony/user-bundle": "~2.0",
+                "jms/serializer-bundle": "^1.0",
+                "knplabs/knp-snappy-bundle": "^1.4",
+                "lexik/mailer-bundle": "^2.0",
+                "php": ">=5.6",
+                "sensio/distribution-bundle": "^5.0",
+                "sensio/framework-extra-bundle": "^3.0.2",
+                "symfony/swiftmailer-bundle": "^2.3",
+                "symfony/symfony": "^3.2"
+            },
+            "require-dev": {
+                "sensio/generator-bundle": "^3.0",
+                "symfony/phpunit-bridge": "^3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "GS\\ToolboxBundle": ""
+                }
+            },
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Julien Billoudet",
+                    "email": "bibi020886@gmail.com"
+                }
+            ],
+            "support": {
+                "source": "https://github.com/GrenobleSwing/ToolboxBundle/tree/master",
+                "issues": "https://github.com/GrenobleSwing/ToolboxBundle/issues"
+            },
+            "time": "2017-10-01T17:07:32+00:00"
+        },
+        {
             "name": "incenteev/composer-parameter-handler",
             "version": "v2.1.2",
             "source": {
@@ -2323,52 +2276,6 @@
             "time": "2017-05-10T10:17:17+00:00"
         },
         {
-            "name": "kmj/paypalbridgebundle",
-            "version": "dev-master",
-            "target-dir": "KMJ/PayPalBridgeBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Demoboy/PayPalBridgeBundle.git",
-                "reference": "36942652767150a900ebcdab6698e2082fb215c9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Demoboy/PayPalBridgeBundle/zipball/36942652767150a900ebcdab6698e2082fb215c9",
-                "reference": "36942652767150a900ebcdab6698e2082fb215c9",
-                "shasum": ""
-            },
-            "require": {
-                "paypal/rest-api-sdk-php": "*",
-                "php": ">=5.3.3"
-            },
-            "require-dev": {
-                "symfony/framework-bundle": ">=2.0"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-0": {
-                    "KMJ\\PayPalBridgeBundle": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Kaelin Jacobson",
-                    "email": "kaelinjacobson@gmail.com"
-                }
-            ],
-            "description": "Symfony2 Bundle creates a bridge for the PayPal REST SDK",
-            "homepage": "http://github.com/Demoboy/PayPalBridgeBundle",
-            "keywords": [
-                "KMJ",
-                "paypal"
-            ],
-            "time": "2014-10-08T01:32:21+00:00"
-        },
-        {
             "name": "knplabs/knp-menu",
             "version": "2.2.0",
             "source": {
@@ -2699,124 +2606,6 @@
             "time": "2016-11-11T18:43:20+00:00"
         },
         {
-            "name": "kriswallsmith/buzz",
-            "version": "v0.15.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/kriswallsmith/Buzz.git",
-                "reference": "d59932b335c2f2f3ec9eee66a37db6bd50d39e13"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/kriswallsmith/Buzz/zipball/d59932b335c2f2f3ec9eee66a37db6bd50d39e13",
-                "reference": "d59932b335c2f2f3ec9eee66a37db6bd50d39e13",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.3.3 || ^7.0"
-            },
-            "require-dev": {
-                "symfony/phpunit-bridge": "^3.3"
-            },
-            "suggest": {
-                "ext-curl": "*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Buzz\\": "lib/Buzz"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Kris Wallsmith",
-                    "email": "kris.wallsmith@gmail.com",
-                    "homepage": "http://kriswallsmith.net/"
-                }
-            ],
-            "description": "Lightweight HTTP client",
-            "homepage": "https://github.com/kriswallsmith/Buzz",
-            "keywords": [
-                "curl",
-                "http client"
-            ],
-            "time": "2017-08-19T09:43:47+00:00"
-        },
-        {
-            "name": "lafourchette/switch-user-stateless-bundle",
-            "version": "v0.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/lafourchette/SwitchUserStatelessBundle.git",
-                "reference": "a79bbfefafd2427363e7bf7813b950ba0c6f83a7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/lafourchette/SwitchUserStatelessBundle/zipball/a79bbfefafd2427363e7bf7813b950ba0c6f83a7",
-                "reference": "a79bbfefafd2427363e7bf7813b950ba0c6f83a7",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5",
-                "symfony/config": "^2.3|^3.0",
-                "symfony/dependency-injection": "^2.3|^3.0",
-                "symfony/http-foundation": "^2.3|^3.0",
-                "symfony/http-kernel": "^2.3|^3.0",
-                "symfony/security-bundle": "^2.3|^3.0",
-                "symfony/security-core": "^2.3|^3.0",
-                "symfony/security-http": "^2.3|^3.0"
-            },
-            "require-dev": {
-                "behat/behat": "^3.0",
-                "behat/symfony2-extension": "^2.0",
-                "doctrine/doctrine-bundle": "^1.2",
-                "doctrine/orm": "^2.2,>=2.2.3",
-                "phpunit/phpunit": "<5.0",
-                "symfony/browser-kit": "^2.3|^3.0",
-                "symfony/serializer": "^2.3|^3.0"
-            },
-            "suggest": {
-                "psr/log": "To log user requests",
-                "symfony/event-dispatcher": "To dispatch a switch user event"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "LaFourchette\\SwitchUserStatelessBundle\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Vincent Chalamon",
-                    "email": "vincentchalamon@gmail.com",
-                    "homepage": "http://blog.vincent-chalamon.fr"
-                }
-            ],
-            "description": "Bundle to use impersonating on Symfony API",
-            "keywords": [
-                "Impersonating",
-                "api",
-                "rest"
-            ],
-            "time": "2016-06-22T09:11:04+00:00"
-        },
-        {
             "name": "leafo/scssphp",
             "version": "v0.6.7",
             "source": {
@@ -3031,68 +2820,6 @@
                 "mailer"
             ],
             "time": "2017-09-07T07:16:19+00:00"
-        },
-        {
-            "name": "lexik/paybox-bundle",
-            "version": "v2.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/lexik/LexikPayboxBundle.git",
-                "reference": "62c8dd06069fd81f18995d370399f660e8d8bbe8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/lexik/LexikPayboxBundle/zipball/62c8dd06069fd81f18995d370399f660e8d8bbe8",
-                "reference": "62c8dd06069fd81f18995d370399f660e8d8bbe8",
-                "shasum": ""
-            },
-            "require": {
-                "kriswallsmith/buzz": "~0.15",
-                "lib-curl": ">=7.10.0",
-                "lib-openssl": ">=0.9.6",
-                "php": ">=5.5.9",
-                "psr/log": "~1.0",
-                "symfony/form": "~2.7|~3.0",
-                "symfony/framework-bundle": "~2.7|~3.0",
-                "symfony/options-resolver": "~2.7|~3.0"
-            },
-            "require-dev": {
-                "symfony/phpunit-bridge": "^2.7.4"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.x.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Lexik\\Bundle\\PayboxBundle\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Olivier Maisonneuve",
-                    "email": "o.maisonneuve@lexik.fr"
-                },
-                {
-                    "name": "Lexik",
-                    "email": "dev@lexik.fr"
-                }
-            ],
-            "description": "LexikPayboxBundle eases the implementation of the Paybox payment system.",
-            "homepage": "https://github.com/lexik/LexikPayboxBundle",
-            "keywords": [
-                "Symfony2",
-                "bundle",
-                "paybox",
-                "payment"
-            ],
-            "time": "2016-10-12T11:12:48+00:00"
         },
         {
             "name": "michaeldegroot/doctrine-encrypt-bundle",
@@ -3751,55 +3478,6 @@
                 "minification"
             ],
             "time": "2016-04-19T09:28:22+00:00"
-        },
-        {
-            "name": "paypal/rest-api-sdk-php",
-            "version": "1.12.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/paypal/PayPal-PHP-SDK.git",
-                "reference": "0925b11ee2261fe369f2bd7a6abfc1bf322a6601"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/paypal/PayPal-PHP-SDK/zipball/0925b11ee2261fe369f2bd7a6abfc1bf322a6601",
-                "reference": "0925b11ee2261fe369f2bd7a6abfc1bf322a6601",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "ext-json": "*",
-                "php": ">=5.3.0",
-                "psr/log": "^1.0.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "3.7.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "PayPal": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "PayPal",
-                    "homepage": "https://github.com/paypal/rest-api-sdk-php/contributors"
-                }
-            ],
-            "description": "PayPal's PHP SDK for REST APIs",
-            "homepage": "http://paypal.github.io/PayPal-PHP-SDK/",
-            "keywords": [
-                "payments",
-                "paypal",
-                "rest",
-                "sdk"
-            ],
-            "time": "2017-07-11T19:16:53+00:00"
         },
         {
             "name": "phpcollection/phpcollection",
@@ -5528,58 +5206,6 @@
             "time": "2014-01-20T22:35:06+00:00"
         },
         {
-            "name": "willdurand/negotiation",
-            "version": "v2.3.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/willdurand/Negotiation.git",
-                "reference": "03436ededa67c6e83b9b12defac15384cb399dc9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/willdurand/Negotiation/zipball/03436ededa67c6e83b9b12defac15384cb399dc9",
-                "reference": "03436ededa67c6e83b9b12defac15384cb399dc9",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.5"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.3-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Negotiation\\": "src/Negotiation"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "William Durand",
-                    "email": "will+git@drnd.me"
-                }
-            ],
-            "description": "Content Negotiation tools for PHP provided as a standalone library.",
-            "homepage": "http://williamdurand.fr/Negotiation/",
-            "keywords": [
-                "accept",
-                "content",
-                "format",
-                "header",
-                "negotiation"
-            ],
-            "time": "2017-05-14T17:21:12+00:00"
-        },
-        {
             "name": "zendframework/zend-code",
             "version": "2.6.3",
             "source": {
@@ -5983,7 +5609,7 @@
         "andres-montanez/magallanes": 20,
         "gs/etransaction": 20,
         "gs/structure": 20,
-        "kmj/paypalbridgebundle": 20,
+        "gs/toolbox": 20,
         "coresphere/console-bundle": 20
     },
     "prefer-stable": false,

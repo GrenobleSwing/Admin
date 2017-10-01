@@ -41,7 +41,7 @@ class PaymentController extends Controller
                 $invoice->setNumber($prefix . sprintf('%05d', $invoiceNumber));
                 $invoice->setDate($payment->getDate());
 
-                $this->get('gsadmin.payment.service')->sendEmail($payment);
+                $this->get('gstoolbox.payment.service')->sendEmail($payment);
 
                 $em->persist($invoice);
             }
@@ -67,21 +67,25 @@ class PaymentController extends Controller
             $view = $this->view(null, 403);
             return $this->handleView($view);
         }
+        $form = $this->createFormBuilder()->getForm();
 
-        $form = $this->get('gsadmin.form_generator')->getDeleteForm($payment, 'payment');
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $payment->getAccount()->removePayment($payment);
             $em = $this->getDoctrine()->getManager();
             $em->remove($payment);
             $em->flush();
 
-            $view = $this->view(null, 204);
-        } else {
-            $view = $this->getFormView($form, 412);
+            $request->getSession()->getFlashBag()->add('success', "Le paiement a bien été supprimé.");
+
+            return $this->redirectToRoute('homepage');
         }
-        return $this->handleView($view);
+
+        // Si la requête est en GET, on affiche une page de confirmation avant de supprimer
+        return $this->render('GSAdminBundle:Payment:delete.html.twig', array(
+                    'payment' => $payment,
+                    'form' => $form->createView()
+        ));
     }
 
     /**
@@ -158,7 +162,7 @@ class PaymentController extends Controller
                 $invoice->setNumber($prefix . sprintf('%05d', $invoiceNumber));
                 $invoice->setDate($payment->getDate());
 
-                $this->get('gsadmin.payment.service')->sendEmail($payment);
+                $this->get('gstoolbox.payment.service')->sendEmail($payment);
 
                 $em->persist($invoice);
             }

@@ -40,7 +40,7 @@ class RegistrationController extends Controller
                 $this->fulfillMembershipRegistration($registration->getPartnerRegistration(), $em);
             }
 
-            $this->get('gsadmin.registration.service')->onValidate($registration);
+            $this->get('gstoolbox.registration.service')->onValidate($registration);
 
             $em->flush();
 
@@ -64,8 +64,8 @@ class RegistrationController extends Controller
         $year = $activity->getYear();
 
         if ($activity->getMembersOnly() &&
-                !($this->get('gsadmin.user.membership')->isMember($account, $year) ||
-                $this->get('gsadmin.user.membership')->isAlmostMember($account, $year)) &&
+                !($this->get('gstoolbox.user.membership')->isMember($account, $year) ||
+                $this->get('gstoolbox.user.membership')->isAlmostMember($account, $year)) &&
                 null !== $activity->getMembershipTopic()) {
             $membership = new Registration();
             $membership->setAccount($account);
@@ -95,7 +95,7 @@ class RegistrationController extends Controller
             $registration->wait();
             $em = $this->getDoctrine()->getManager();
 
-            $this->get('gsadmin.registration.service')->onWait($registration);
+            $this->get('gstoolbox.registration.service')->onWait($registration);
 
             $em->flush();
 
@@ -134,7 +134,7 @@ class RegistrationController extends Controller
                 $em->remove($registration);
             }
 
-            $this->get('gsadmin.registration.service')->onCancel($registration);
+            $this->get('gstoolbox.registration.service')->onCancel($registration);
 
             $em->flush();
 
@@ -185,7 +185,7 @@ class RegistrationController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($registration);
 
-            $this->get('gsadmin.registration.service')->onSubmitted($registration);
+            $this->get('gstoolbox.registration.service')->onSubmitted($registration);
 
             $em->flush();
 
@@ -257,7 +257,7 @@ class RegistrationController extends Controller
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->get('gsadmin.registration.service')->cleanPayments($registration);
+            $this->get('gstoolbox.registration.service')->cleanPayments($registration);
 
             $em = $this->getDoctrine()->getManager();
             $em->remove($registration);

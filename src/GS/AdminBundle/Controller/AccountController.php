@@ -175,7 +175,7 @@ class AccountController extends Controller
         } else {
             $activity = null;
         }
-        $balance = $this->get('gsadmin.account_balance')->getBalance($account, $activity);
+        $balance = $this->get('gstoolbox.account_balance')->getBalance($account, $activity);
 
         $payment = $balance['payment'];
         if ( null !== $payment) {

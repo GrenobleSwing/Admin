@@ -38,7 +38,7 @@ class MemberController extends Controller
             $onlyPaid = true;
         }
 
-        $listAccounts = $this->get('gsadmin.user.membership')->getMembers($year, $onlyPaid);
+        $listAccounts = $this->get('gstoolbox.user.membership')->getMembers($year, $onlyPaid);
 
         $serializedEntity = $this->get('jms_serializer')->serialize($listAccounts, 'json');
 

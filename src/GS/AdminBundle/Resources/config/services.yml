@@ -1,8 +1,4 @@
 services:
-#    gsadmin.example:
-#        class: GS\AdminBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
-
     gsadmin.menu.builder:
         class: GS\AdminBundle\Menu\Builder
         arguments: [ '@knp_menu.factory', '@doctrine.orm.entity_manager' ]
@@ -36,10 +32,6 @@ services:
         tags:
             - { name: kernel.event_subscriber }
 
-    gsadmin.account_balance:
-        class: GS\AdminBundle\Services\AccountBalanceService
-        arguments: [ '@doctrine.orm.entity_manager' ]
-
 #    gsadmin.user.repository:
 #            class: Doctrine\ORM\EntityRepository
 #            factory: ["@doctrine.orm.entity_manager", getRepository]
@@ -52,15 +44,3 @@ services:
         arguments: ['']
         tags:
             - { name: doctrine.event_subscriber }
-
-    gsadmin.user.membership:
-        class: GS\AdminBundle\Services\MembershipService
-        arguments: [ '@doctrine.orm.entity_manager' ]
-
-    gsadmin.registration.service:
-        class: GS\AdminBundle\Services\RegistrationService
-        arguments: [ '@doctrine.orm.entity_manager', '@mailer', '@lexik_mailer.message_factory' ]
-
-    gsadmin.payment.service:
-        class: GS\AdminBundle\Services\PaymentService
-        arguments: [ '@mailer', '@lexik_mailer.message_factory' ]

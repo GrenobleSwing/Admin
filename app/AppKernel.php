@@ -36,6 +36,7 @@ class AppKernel extends Kernel
             new GS\AdminBundle\GSAdminBundle(),
             new GS\ETransactionBundle\GSETransactionBundle(),
             new GS\StructureBundle\GSStructureBundle(),
+            new GS\ToolboxBundle\GSToolboxBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
