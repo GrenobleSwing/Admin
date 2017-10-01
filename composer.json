@@ -24,6 +24,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/GrenobleSwing/ETransactionBundle"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/GrenobleSwing/StructureBundle"
         }
     ],
     "require": {
@@ -41,6 +45,7 @@
         "friendsofsymfony/rest-bundle": "^2.0",
         "friendsofsymfony/user-bundle": "~2.0",
         "gs/etransaction": "dev-master",
+        "gs/structure": "dev-master",
         "incenteev/composer-parameter-handler": "^2.0",
         "jms/serializer-bundle": "^1.0",
         "kmj/paypalbridgebundle": "dev-master",

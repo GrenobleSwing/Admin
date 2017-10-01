@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "9133444f3faca9f4a6ab8703c2c549e5",
+    "content-hash": "7f033540e813e8e108383eafac0526e7",
     "packages": [
         {
             "name": "andres-montanez/magallanes",
@@ -1865,12 +1865,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrenobleSwing/ETransactionBundle.git",
-                "reference": "4faa3e7a06e14bd97476806ff899c44eabd904ad"
+                "reference": "95b7c23fff532da157fb40a4ae6c85dca257ea76"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrenobleSwing/ETransactionBundle/zipball/4faa3e7a06e14bd97476806ff899c44eabd904ad",
-                "reference": "4faa3e7a06e14bd97476806ff899c44eabd904ad",
+                "url": "https://api.github.com/repos/GrenobleSwing/ETransactionBundle/zipball/95b7c23fff532da157fb40a4ae6c85dca257ea76",
+                "reference": "95b7c23fff532da157fb40a4ae6c85dca257ea76",
                 "shasum": ""
             },
             "require": {
@@ -1879,7 +1879,7 @@
                 "doctrine/orm": "^2.5",
                 "egeloen/ordered-form-bundle": "^2.0",
                 "michaeldegroot/doctrine-encrypt-bundle": "^3.0",
-                "php": ">=5.5.9",
+                "php": ">=5.6",
                 "sensio/distribution-bundle": "^5.0",
                 "sensio/framework-extra-bundle": "^3.0.2",
                 "stof/doctrine-extensions-bundle": "^1.2",
@@ -1910,7 +1910,75 @@
                 "source": "https://github.com/GrenobleSwing/ETransactionBundle/tree/master",
                 "issues": "https://github.com/GrenobleSwing/ETransactionBundle/issues"
             },
-            "time": "2017-09-30T07:44:21+00:00"
+            "time": "2017-10-01T01:19:39+00:00"
+        },
+        {
+            "name": "gs/structure",
+            "version": "dev-master",
+            "target-dir": "GS/StructureBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GrenobleSwing/StructureBundle.git",
+                "reference": "6389f31e46fe812f41e097f66001302dd2ed9f0a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GrenobleSwing/StructureBundle/zipball/6389f31e46fe812f41e097f66001302dd2ed9f0a",
+                "reference": "6389f31e46fe812f41e097f66001302dd2ed9f0a",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/doctrine-bundle": "^1.6",
+                "doctrine/doctrine-cache-bundle": "^1.2",
+                "doctrine/doctrine-migrations-bundle": "^1.0",
+                "doctrine/orm": "^2.5",
+                "egeloen/ordered-form-bundle": "^2.0",
+                "egulias/email-validator": "~2.1",
+                "friendsofsymfony/user-bundle": "~2.0",
+                "jms/serializer-bundle": "^1.0",
+                "knplabs/knp-snappy-bundle": "^1.4",
+                "leafo/scssphp": "^0.6",
+                "lexik/jwt-authentication-bundle": "^2.0",
+                "lexik/mailer-bundle": "^2.0",
+                "misd/phone-number-bundle": "^1.0",
+                "nelmio/api-doc-bundle": "^2.0",
+                "patchwork/jsqueeze": "^2.0",
+                "php": ">=5.6",
+                "sensio/distribution-bundle": "^5.0",
+                "sensio/framework-extra-bundle": "^3.0.2",
+                "shapecode/hidden-entity-type-bundle": "^2.0",
+                "stof/doctrine-extensions-bundle": "^1.2",
+                "symfony/assetic-bundle": "^2.8",
+                "symfony/swiftmailer-bundle": "^2.3",
+                "symfony/symfony": "^3.2",
+                "vich/uploader-bundle": "~1.4",
+                "willdurand/hateoas-bundle": "^1.2"
+            },
+            "require-dev": {
+                "doctrine/doctrine-fixtures-bundle": "^2.3",
+                "sensio/generator-bundle": "^3.0",
+                "symfony/phpunit-bridge": "^3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "GS\\StructureBundle": ""
+                }
+            },
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Julien Billoudet",
+                    "email": "bibi020886@gmail.com"
+                }
+            ],
+            "support": {
+                "source": "https://github.com/GrenobleSwing/StructureBundle/tree/master",
+                "issues": "https://github.com/GrenobleSwing/StructureBundle/issues"
+            },
+            "time": "2017-10-01T06:28:18+00:00"
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -5914,6 +5982,7 @@
     "stability-flags": {
         "andres-montanez/magallanes": 20,
         "gs/etransaction": 20,
+        "gs/structure": 20,
         "kmj/paypalbridgebundle": 20,
         "coresphere/console-bundle": 20
     },
