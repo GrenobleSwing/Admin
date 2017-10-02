@@ -83,23 +83,10 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
-lexik_jwt_authentication:
-    private_key_path: '%jwt_private_key_path%'
-    public_key_path:  '%jwt_public_key_path%'
-    pass_phrase:      '%jwt_key_pass_phrase%'
-    token_ttl:        '%jwt_token_ttl%'
-
 lexik_mailer:
     admin_email: %admin_email%
     templating_extensions:
         - 'twig.extension.trans' # load the translation extension
-
-fos_rest:
-    routing_loader:
-        default_format: json
-        include_format: false
-    serializer:
-        serialize_null:  true
 
 fos_user:
     db_driver: orm
@@ -114,22 +101,6 @@ fos_user:
     profile:
         form:
             type: GS\StructureBundle\Form\Type\UserProfileType
-
-kmj_pay_pal_bridge:
-    environment: sandbox
-    sandbox:
-        clientId: '%paypal_sandbox_client_id%'
-        secret: '%paypal_sandbox_secret%'
-    production:
-        clientId: '%paypal_prod_client_id%'
-        secret: '%paypal_prod_secret%'
-    logs:
-        enabled: true
-        filename: '%kernel.root_dir%/../var/logs/paypal.log'
-        level: FINE
-    http:
-        timeout: 30
-        retry: true
 
 assetic:
     debug:          '%kernel.debug%'
