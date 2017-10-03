@@ -131,11 +131,11 @@ vich_uploader:
         account_image:
             uri_prefix:         '%vich_uri_prefix%/images/account'
             namer:              vich_uploader.namer_uniqid
-            upload_destination: '%kernel.root_dir%/../web/images/account'
+            upload_destination: '%kernel.root_dir%/../../data/images/account'
         certificate_file:
             uri_prefix:         '%vich_uri_prefix%/files/certificate'
             namer:              vich_uploader.namer_uniqid
-            upload_destination: '%kernel.root_dir%/../web/files/certificate'
+            upload_destination: '%kernel.root_dir%/../../data/files/certificate'
 
 stof_doctrine_extensions:
     default_locale: fr_FR
@@ -157,6 +157,6 @@ dizda_cloud_backup:
     cloud_storages:
         # Local storage definition
         local:
-            path: '%kernel.root_dir%/../../backups'
+            path: '%kernel.root_dir%/../../data/backups'
     databases:
         mysql: ~

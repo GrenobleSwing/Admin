@@ -1818,12 +1818,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrenobleSwing/StructureBundle.git",
-                "reference": "96ab43e44eeb2d01746319af84d604350a452f79"
+                "reference": "745c4b2fb6145fb3cfef0a01e3a8f9393e00a17c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrenobleSwing/StructureBundle/zipball/96ab43e44eeb2d01746319af84d604350a452f79",
-                "reference": "96ab43e44eeb2d01746319af84d604350a452f79",
+                "url": "https://api.github.com/repos/GrenobleSwing/StructureBundle/zipball/745c4b2fb6145fb3cfef0a01e3a8f9393e00a17c",
+                "reference": "745c4b2fb6145fb3cfef0a01e3a8f9393e00a17c",
                 "shasum": ""
             },
             "require": {
@@ -1877,7 +1877,7 @@
                 "source": "https://github.com/GrenobleSwing/StructureBundle/tree/master",
                 "issues": "https://github.com/GrenobleSwing/StructureBundle/issues"
             },
-            "time": "2017-10-02T06:37:36+00:00"
+            "time": "2017-10-03T06:51:34+00:00"
         },
         {
             "name": "gs/toolbox",
@@ -1886,12 +1886,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrenobleSwing/ToolboxBundle.git",
-                "reference": "6e77dc9c757e05b4946cc079a583c405eb06d811"
+                "reference": "8daf44e707ea68fee13935ea06c4f894f023f58e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrenobleSwing/ToolboxBundle/zipball/6e77dc9c757e05b4946cc079a583c405eb06d811",
-                "reference": "6e77dc9c757e05b4946cc079a583c405eb06d811",
+                "url": "https://api.github.com/repos/GrenobleSwing/ToolboxBundle/zipball/8daf44e707ea68fee13935ea06c4f894f023f58e",
+                "reference": "8daf44e707ea68fee13935ea06c4f894f023f58e",
                 "shasum": ""
             },
             "require": {
@@ -1931,7 +1931,7 @@
                 "source": "https://github.com/GrenobleSwing/ToolboxBundle/tree/master",
                 "issues": "https://github.com/GrenobleSwing/ToolboxBundle/issues"
             },
-            "time": "2017-10-01T17:07:32+00:00"
+            "time": "2017-10-03T06:07:54+00:00"
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -2325,7 +2325,7 @@
                     "email": "stof@notk.org"
                 },
                 {
-                    "name": "KnpLabs",
+                    "name": "Knplabs",
                     "homepage": "http://knplabs.com"
                 },
                 {
