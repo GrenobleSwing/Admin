@@ -194,7 +194,7 @@ class AccountController extends Controller
             $transaction->setUrlAnnule($this->generateUrl('homepage', array(), UrlGeneratorInterface::ABSOLUTE_URL));
             $transaction->setUrlEffectue($this->generateUrl('homepage', array(), UrlGeneratorInterface::ABSOLUTE_URL));
             $transaction->setUrlRefuse($this->generateUrl('homepage', array(), UrlGeneratorInterface::ABSOLUTE_URL));
-            $transaction->setIpnUrl($this->generateUrl('gse_transaction_ipn', array(), UrlGeneratorInterface::ABSOLUTE_URL));
+            $transaction->setIpnUrl($this->generateUrl('gs_etran_ipn', array(), UrlGeneratorInterface::ABSOLUTE_URL));
 
             return $this->render('GSAdminBundle:Account:balance.html.twig', array(
                 'transaction' => $transaction,
