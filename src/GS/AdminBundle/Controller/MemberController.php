@@ -6,8 +6,8 @@ use GS\StructureBundle\Entity\Year;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 class MemberController extends Controller
 {
@@ -42,7 +42,7 @@ class MemberController extends Controller
 
         $serializedEntity = $this->get('jms_serializer')->serialize($listAccounts, 'json');
 
-        return new Response($serializedEntity);
+        return JsonResponse::fromJsonString($serializedEntity);
     }
 
 }

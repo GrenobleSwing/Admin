@@ -9,6 +9,7 @@ use JMS\Serializer\SerializationContext;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -137,7 +138,7 @@ class PaymentController extends Controller
         $serializedEntity = $this->get('jms_serializer')->serialize($listPayments, 'json',
                 SerializationContext::create()->setGroups(array('Default', 'account' => array('payment'))));
 
-        return new Response($serializedEntity);
+        return JsonResponse::fromJsonString($serializedEntity);
     }
 
     /**
