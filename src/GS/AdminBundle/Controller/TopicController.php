@@ -204,6 +204,7 @@ class TopicController extends Controller
     public function editAction(Topic $topic, Request $request)
     {
         $form = $this->createForm(TopicType::class, $topic);
+        $form->remove('activity');
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {

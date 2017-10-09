@@ -658,16 +658,16 @@
         },
         {
             "name": "doctrine/doctrine-bundle",
-            "version": "1.6.11",
+            "version": "1.6.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineBundle.git",
-                "reference": "829499731395e1ecdf0e3f5cca3119f94f79c8e6"
+                "reference": "96a074a6202d6caf504fb728688f89bb76caf987"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/829499731395e1ecdf0e3f5cca3119f94f79c8e6",
-                "reference": "829499731395e1ecdf0e3f5cca3119f94f79c8e6",
+                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/96a074a6202d6caf504fb728688f89bb76caf987",
+                "reference": "96a074a6202d6caf504fb728688f89bb76caf987",
                 "shasum": ""
             },
             "require": {
@@ -735,7 +735,7 @@
                 "orm",
                 "persistence"
             ],
-            "time": "2017-10-04T22:58:25+00:00"
+            "time": "2017-10-08T14:49:13+00:00"
         },
         {
             "name": "doctrine/doctrine-cache-bundle",
@@ -1764,12 +1764,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrenobleSwing/ETransactionBundle.git",
-                "reference": "42a82c5d06c8745de82693481d3e5a2929f0086e"
+                "reference": "98388f4dd5276049f5955205dea1c23bcfe8aead"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrenobleSwing/ETransactionBundle/zipball/42a82c5d06c8745de82693481d3e5a2929f0086e",
-                "reference": "42a82c5d06c8745de82693481d3e5a2929f0086e",
+                "url": "https://api.github.com/repos/GrenobleSwing/ETransactionBundle/zipball/98388f4dd5276049f5955205dea1c23bcfe8aead",
+                "reference": "98388f4dd5276049f5955205dea1c23bcfe8aead",
                 "shasum": ""
             },
             "require": {
@@ -1809,7 +1809,7 @@
                 "source": "https://github.com/GrenobleSwing/ETransactionBundle/tree/master",
                 "issues": "https://github.com/GrenobleSwing/ETransactionBundle/issues"
             },
-            "time": "2017-10-03T08:00:28+00:00"
+            "time": "2017-10-05T07:19:17+00:00"
         },
         {
             "name": "gs/structure",
@@ -1818,12 +1818,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrenobleSwing/StructureBundle.git",
-                "reference": "6d28ab4db975c69ef8a4095c0bbe2fa6d79b44c0"
+                "reference": "8095d9873ba80bd9d9b1b9a9a691127850e686b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrenobleSwing/StructureBundle/zipball/6d28ab4db975c69ef8a4095c0bbe2fa6d79b44c0",
-                "reference": "6d28ab4db975c69ef8a4095c0bbe2fa6d79b44c0",
+                "url": "https://api.github.com/repos/GrenobleSwing/StructureBundle/zipball/8095d9873ba80bd9d9b1b9a9a691127850e686b8",
+                "reference": "8095d9873ba80bd9d9b1b9a9a691127850e686b8",
                 "shasum": ""
             },
             "require": {
@@ -1877,7 +1877,7 @@
                 "source": "https://github.com/GrenobleSwing/StructureBundle/tree/master",
                 "issues": "https://github.com/GrenobleSwing/StructureBundle/issues"
             },
-            "time": "2017-10-05T05:59:59+00:00"
+            "time": "2017-10-09T20:51:27+00:00"
         },
         {
             "name": "gs/toolbox",
@@ -1886,12 +1886,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrenobleSwing/ToolboxBundle.git",
-                "reference": "17cacf11743219ea5dcb32d687775ef1ff70c477"
+                "reference": "d70ed9a2de8c088ace5010f23511737e2dbc92a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrenobleSwing/ToolboxBundle/zipball/17cacf11743219ea5dcb32d687775ef1ff70c477",
-                "reference": "17cacf11743219ea5dcb32d687775ef1ff70c477",
+                "url": "https://api.github.com/repos/GrenobleSwing/ToolboxBundle/zipball/d70ed9a2de8c088ace5010f23511737e2dbc92a7",
+                "reference": "d70ed9a2de8c088ace5010f23511737e2dbc92a7",
                 "shasum": ""
             },
             "require": {
@@ -1931,7 +1931,7 @@
                 "source": "https://github.com/GrenobleSwing/ToolboxBundle/tree/master",
                 "issues": "https://github.com/GrenobleSwing/ToolboxBundle/issues"
             },
-            "time": "2017-10-03T07:59:43+00:00"
+            "time": "2017-10-09T20:50:35+00:00"
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -4751,16 +4751,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v3.3.9",
+            "version": "v3.3.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "a9d2f68ae9946000e2bcc3403d218ec0124f992a"
+                "reference": "cfef3b2d505ae4375b17032bd03ed9a3da4b7b43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/a9d2f68ae9946000e2bcc3403d218ec0124f992a",
-                "reference": "a9d2f68ae9946000e2bcc3403d218ec0124f992a",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/cfef3b2d505ae4375b17032bd03ed9a3da4b7b43",
+                "reference": "cfef3b2d505ae4375b17032bd03ed9a3da4b7b43",
                 "shasum": ""
             },
             "require": {
@@ -4900,7 +4900,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2017-09-11T16:13:42+00:00"
+            "time": "2017-10-05T23:40:32+00:00"
         },
         {
             "name": "twig/twig",
@@ -5544,16 +5544,16 @@
         },
         {
             "name": "symfony/phpunit-bridge",
-            "version": "v3.3.9",
+            "version": "v3.3.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/phpunit-bridge.git",
-                "reference": "27d159bd9bd14a3bd9d3e136081c321a0d621c03"
+                "reference": "6e40d1c8bc4037edf3852c0b29fdd2923c4e2133"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/27d159bd9bd14a3bd9d3e136081c321a0d621c03",
-                "reference": "27d159bd9bd14a3bd9d3e136081c321a0d621c03",
+                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/6e40d1c8bc4037edf3852c0b29fdd2923c4e2133",
+                "reference": "6e40d1c8bc4037edf3852c0b29fdd2923c4e2133",
                 "shasum": ""
             },
             "require": {
@@ -5602,7 +5602,7 @@
             ],
             "description": "Symfony PHPUnit Bridge",
             "homepage": "https://symfony.com",
-            "time": "2017-09-05T11:23:06+00:00"
+            "time": "2017-10-02T06:54:00+00:00"
         }
     ],
     "aliases": [],
