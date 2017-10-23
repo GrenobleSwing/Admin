@@ -7,6 +7,7 @@ use GS\StructureBundle\Form\Type\CertificateType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class CertificateController extends Controller
@@ -38,7 +39,11 @@ class CertificateController extends Controller
     }
 
     /**
-     * @Route("/certificate/{id}/delete", name="gsadmin_delete_certificate", requirements={"id": "\d+"})
+     * @Route("/certificate/{id}/delete",
+     *     name="gsadmin_delete_certificate",
+     *     requirements={"id": "\d+"},
+     *     options = { "expose" = true }
+     * )
      * @Security("is_granted('delete', certificate)")
      */
     public function deleteAction(Certificate $certificate, Request $request)
@@ -64,7 +69,11 @@ class CertificateController extends Controller
     }
 
     /**
-     * @Route("/certificate/{id}", name="gsadmin_view_certificate", requirements={"id": "\d+"})
+     * @Route("/certificate/{id}",
+     *     name="gsadmin_view_certificate",
+     *     requirements={"id": "\d+"},
+     *     options = { "expose" = true }
+     * )
      * @Security("is_granted('view', certificate)")
      */
     public function viewAction(Certificate $certificate)
@@ -80,18 +89,31 @@ class CertificateController extends Controller
      */
     public function indexAction()
     {
+        return $this->render('GSAdminBundle:Certificate:index.html.twig');
+    }
+
+    /**
+     * @Route("/certificate/json", name="gsadmin_index_json_certificate")
+     * @Security("has_role('ROLE_TREASURER')")
+     */
+    public function indexJsonAction()
+    {
         $listCertificates = $this->getDoctrine()->getManager()
             ->getRepository('GSStructureBundle:Certificate')
             ->findAll()
             ;
 
-        return $this->render('GSAdminBundle:Certificate:index.html.twig', array(
-            'listCertificates' => $listCertificates
-        ));
+        $serializedEntity = $this->get('jms_serializer')->serialize($listCertificates, 'json');
+
+        return JsonResponse::fromJsonString($serializedEntity);
     }
 
     /**
-     * @Route("/certificate/{id}/edit", name="gsadmin_edit_certificate", requirements={"id": "\d+"})
+     * @Route("/certificate/{id}/edit",
+     *     name="gsadmin_edit_certificate",
+     *     requirements={"id": "\d+"},
+     *     options = { "expose" = true }
+     * )
      * @Security("is_granted('edit', certificate)")
      */
     public function editAction(Certificate $certificate, Request $request)

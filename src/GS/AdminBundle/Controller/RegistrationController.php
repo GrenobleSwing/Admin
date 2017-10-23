@@ -9,6 +9,7 @@ use GS\StructureBundle\Form\Type\RegistrationType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class RegistrationController extends Controller
@@ -121,11 +122,6 @@ class RegistrationController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $registration->cancel();
-
-            if (null !== $registration->getPartnerRegistration()) {
-                $registration->getPartnerRegistration()->setPartnerRegistration(null);
-                $registration->setPartnerRegistration(null);
-            }
 
             $em = $this->getDoctrine()->getManager();
 
@@ -276,7 +272,11 @@ class RegistrationController extends Controller
     }
 
     /**
-     * @Route("/registration/{id}", name="gsadmin_view_registration", requirements={"id": "\d+"})
+     * @Route("/registration/{id}",
+     *   name="gsadmin_view_registration",
+     *   requirements={"id": "\d+"},
+     *   options = { "expose" = true }
+     * )
      * @Security("is_granted('view', registration)")
      */
     public function getAction(Registration $registration)
@@ -292,14 +292,23 @@ class RegistrationController extends Controller
      */
     public function indexAction()
     {
+        return $this->render('GSAdminBundle:Registration:index.html.twig');
+    }
+
+    /**
+     * @Route("/registration/json", name="gsadmin_index_json_registration")
+     * @Security("has_role('ROLE_ORGANIZER')")
+     */
+    public function indexJsonAction()
+    {
         $listRegistrations = $this->getDoctrine()->getManager()
                 ->getRepository('GSStructureBundle:Registration')
                 ->findAll()
                 ;
 
-        return $this->render('GSAdminBundle:Registration:index.html.twig', array(
-            'listRegistrations' => $listRegistrations
-        ));
+        $serializedEntity = $this->get('jms_serializer')->serialize($listRegistrations, 'json');
+
+        return JsonResponse::fromJsonString($serializedEntity);
     }
 
     /**

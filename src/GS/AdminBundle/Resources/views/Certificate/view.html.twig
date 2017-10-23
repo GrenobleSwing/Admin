@@ -26,9 +26,6 @@
         </a>
     </p>
 
-    <h3>Justificatif pour l'année</h3>
-    {{ certificate.year.title }}
-
     <h3>Validité</h3>
     Du {{ certificate.startDate|date('d/m/Y', timezone="Europe/Paris") }}
     au {{ certificate.endDate|date('d/m/Y', timezone="Europe/Paris") }}

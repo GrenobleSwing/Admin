@@ -129,13 +129,13 @@ vich_uploader:
 
     mappings:
         account_image:
-            uri_prefix:         '%vich_uri_prefix%/images/account'
+            uri_prefix:         '%vich_account_uri_prefix%'
             namer:              vich_uploader.namer_uniqid
-            upload_destination: '%kernel.root_dir%/../../data/images/account'
+            upload_destination: '%vich_account_folder%'
         certificate_file:
-            uri_prefix:         '%vich_uri_prefix%/files/certificate'
+            uri_prefix:         '%vich_certificate_uri_prefix%'
             namer:              vich_uploader.namer_uniqid
-            upload_destination: '%kernel.root_dir%/../../data/files/certificate'
+            upload_destination: '%vich_certificate_folder%'
 
 stof_doctrine_extensions:
     default_locale: fr_FR

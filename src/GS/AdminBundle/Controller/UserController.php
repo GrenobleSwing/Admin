@@ -22,10 +22,10 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/user/all", name="gsadmin_all_user")
+     * @Route("/user/json", name="gsadmin_index_json_user")
      * @Security("has_role('ROLE_ADMIN')")
      */
-    public function allJsonAction()
+    public function indexJsonAction()
     {
         $listUsers = $this->getDoctrine()->getManager()
             ->getRepository('GSStructureBundle:User')

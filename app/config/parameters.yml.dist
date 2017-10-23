@@ -45,4 +45,7 @@ parameters:
 
     httpProtocol: http
 
-    vich_uri_prefix: /web
+    vich_account_uri_prefix: '/web/images/account'
+    vich_account_folder: '%kernel.root_dir%/../../data/files/account'
+    vich_certificate_uri_prefix: '/web/files/certificate'
+    vich_certificate_folder: '%kernel.root_dir%/../../data/files/certificate'
