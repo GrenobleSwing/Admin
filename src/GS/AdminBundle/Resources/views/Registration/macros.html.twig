@@ -9,8 +9,13 @@
             <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
         {% elseif registration.state == 'PAID' %}
             <span class="glyphicon glyphicon-euro" aria-hidden="true"></span>
+        {% elseif registration.state == 'FREE' %}
+            <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
         {% elseif registration.state == 'CANCELLED' %}
             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        {% endif %}
+        {% if registration.semester %}
+            <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
         {% endif %}
         {% if registration.withPartner %}
             <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>

@@ -21,11 +21,6 @@ class RegistrationController extends Controller
      */
     public function validateAction(Registration $registration, Request $request)
     {
-        if (!in_array($registration->getState(), array('SUBMITTED', 'WAITING'))) {
-            $request->getSession()->getFlashBag()->add('danger', "Impossible to validate registration");
-            return $this->redirectToRoute('gsadmin_view_topic', array('id' => $registration->getTopic()->getId()));
-        }
-
         $form = $this->createFormBuilder()->getForm();
 
         $form->handleRequest($request);
@@ -84,11 +79,6 @@ class RegistrationController extends Controller
      */
     public function waitAction(Registration $registration, Request $request)
     {
-        if ('SUBMITTED' != $registration->getState()) {
-            $request->getSession()->getFlashBag()->add('danger', "Impossible to put registration in waiting list");
-            return $this->redirectToRoute('gsadmin_view_topic', array('id' => $registration->getTopic()->getId()));
-        }
-
         $form = $this->createFormBuilder()->getForm();
 
         $form->handleRequest($request);
