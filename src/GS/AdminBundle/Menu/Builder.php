@@ -100,6 +100,9 @@ class Builder
                     'all' => true,
                 )
             ));
+            $menu['Secrétaire']->addChild('Liste des inscriptions', array(
+                'route' => 'gsadmin_index_registration',
+            ));
         }
 
         return $menu;
@@ -132,9 +135,6 @@ class Builder
         }
         $menu['Admin']->addChild('Liste des utilisateurs', array(
             'route' => 'gsadmin_index_user',
-        ));
-        $menu['Admin']->addChild('Liste des inscriptions', array(
-            'route' => 'gsadmin_index_registration',
         ));
         $menu['Admin']->addChild('Liste des paiements', array(
             'route' => 'gsadmin_index_payment',

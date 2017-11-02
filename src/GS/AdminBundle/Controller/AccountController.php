@@ -165,7 +165,7 @@ class AccountController extends Controller
      * @Route("/my_balance", name="gsadmin_my_balance")
      * @Security("has_role('ROLE_USER')")
      */
-    public function getMyBalanceAction(Request $request)
+    public function myBalanceAction(Request $request)
     {
         $account = $this->myAccount();
         $activityId = $request->query->get('activityId');
@@ -227,7 +227,7 @@ class AccountController extends Controller
     {
         $payments = $this->getDoctrine()->getManager()
                 ->getRepository('GSStructureBundle:Payment')
-                ->findBy(array('account' => $account));
+                ->findPaymentsForAccount($account);
 
         return $payments;
     }
