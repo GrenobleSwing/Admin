@@ -19,6 +19,10 @@ certificate:
     type:     annotation
     resource: GS\AdminBundle\Controller\CertificateController
 
+check:
+    type:     annotation
+    resource: GS\AdminBundle\Controller\CheckController
+
 discount:
     type:     annotation
     resource: GS\AdminBundle\Controller\DiscountController

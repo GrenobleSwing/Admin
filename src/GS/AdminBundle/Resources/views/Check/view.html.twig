@@ -1,0 +1,19 @@
+{% extends "GSAdminBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    <h3>Liste des personnes devant régulariser leur adhésion</h3>
+    <ul>
+        {% for email in listNotMember %}
+            <li>
+                {{ email }}
+            </li>
+        {% else %}
+            <li>Tout le monde est bien membre</li>
+        {% endfor %}
+    </ul>
+
+    <a href='mailto:{{- listNotMember|join(',') -}}'>Envoyer un email</a>
+
+{% endblock %}

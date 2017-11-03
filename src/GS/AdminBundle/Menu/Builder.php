@@ -41,6 +41,9 @@ class Builder
         $menu['Orga']->addChild('Liste des années', array(
             'route' => 'gsadmin_index_year',
         ));
+        $menu['Orga']->addChild('Vérifier si des personnes sont membres', array(
+            'route' => 'gsadmin_check_membership',
+        ));
 
         return $menu;
     }
