@@ -48,6 +48,7 @@ class UserController extends Controller
     public function editAction(User $user, Request $request)
     {
         $form = $this->createForm(UserType::class, $user);
+        $form->remove('plainPassword');
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
