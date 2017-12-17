@@ -28,12 +28,13 @@ class RegistrationController extends Controller
             $registration->validate();
             $em = $this->getDoctrine()->getManager();
 
-            $this->fulfillMembershipRegistration($registration, $em);
+            $membershipService = $this->get('gstoolbox.user.membership');
+            $membershipService->fulfillMembershipRegistration($registration);
 
             # In case of a registration with a partner, validate also the partner
             if (null !== $registration->getPartnerRegistration()) {
                 $registration->getPartnerRegistration()->validate();
-                $this->fulfillMembershipRegistration($registration->getPartnerRegistration(), $em);
+                $membershipService->fulfillMembershipRegistration($registration->getPartnerRegistration());
             }
 
             $this->get('gstoolbox.registration.service')->onValidate($registration);
@@ -49,28 +50,6 @@ class RegistrationController extends Controller
             'registration' => $registration,
             'form' => $form->createView()
         ));
-    }
-
-    # Check if the membership is mandatory for the Registration
-    # and do the needed work in case it is.
-    private function fulfillMembershipRegistration (Registration $registration, EntityManager $em) {
-        $topic = $registration->getTopic();
-        $account = $registration->getAccount();
-        $activity = $topic->getActivity();
-        $year = $activity->getYear();
-
-        if ($activity->getMembersOnly() &&
-                !($this->get('gstoolbox.user.membership')->isMember($account, $year) ||
-                $this->get('gstoolbox.user.membership')->isAlmostMember($account, $year)) &&
-                null !== $activity->getMembershipTopic()) {
-            $membership = new Registration();
-            $membership->setAccount($account);
-            $membership->setTopic($activity->getMembershipTopic());
-            $membership->setAcceptRules($registration->getAcceptRules());
-            $membership->validate();
-            $em->persist($membership);
-        }
-        return $this;
     }
 
     /**

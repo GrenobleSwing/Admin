@@ -92,43 +92,56 @@
     {% if is_granted("moderate", topic) %}
         <h3>Liste des inscriptions :</h3>
         <ul>
-            {% for registration in topic.registrations %}
-                <li>
-                    {{ macro_reg.print_state(registration) }}
-                    {{ registration.account.displayName }}
-                    {% if registration.withPartner %}
-                        {% if registration.partnerRegistration %}
-                            - partenaire: {{ registration.partnerRegistration.account.displayName }}
-                        {% else %}
-                            - partenaire: {{ registration.partnerFirstName }}
-                            {{ registration.partnerLastName }}
-                            ({{- registration.partnerEmail -}})
+            {% for state in ['paid', 'validated', 'waiting', 'submitted'] %}
+                {% if state == 'paid' %}
+                    <li> Payées :
+                {% elseif state == 'validated' %}
+                    <li> Validées :
+                {% elseif state == 'waiting' %}
+                    <li> En liste d'attente :
+                {% else %}
+                    <li> Soumises :
+                {% endif %}
+                <ul>
+                {% for registration in topic.registrations if registration.state == state|upper %}
+                    <li>
+                        {{ macro_reg.print_state(registration) }}
+                        {{ registration.account.displayName }}
+                        {% if registration.withPartner %}
+                            {% if registration.partnerRegistration %}
+                                - partenaire: {{ registration.partnerRegistration.account.displayName }}
+                            {% else %}
+                                - partenaire: {{ registration.partnerFirstName }}
+                                {{ registration.partnerLastName }}
+                                ({{- registration.partnerEmail -}})
+                            {% endif %}
                         {% endif %}
-                    {% endif %}
-                    <a href="{{ path('gsadmin_view_registration', {'id': registration.id}) }}" class="btn btn-default btn-xs">
-                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Voir
-                    </a>
-                    {% if is_granted("validate", registration) %}
-                        <a href="{{ path('gsadmin_validate_registration', {'id': registration.id}) }}" class="btn btn-default btn-xs"
-                           data-toggle="tooltip" data-placement="top" title="Valider">
-                            <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                        <a href="{{ path('gsadmin_view_registration', {'id': registration.id}) }}" class="btn btn-default btn-xs">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Voir
                         </a>
-                    {% endif %}
-                    {% if is_granted("wait", registration) %}
-                        <a href="{{ path('gsadmin_wait_registration', {'id': registration.id}) }}" class="btn btn-default btn-xs"
-                           data-toggle="tooltip" data-placement="top" title="Mettre en list d'attente">
-                            <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-                        </a>
-                    {% endif %}
-                    {% if is_granted("cancel", registration) %}
-                        <a href="{{ path('gsadmin_cancel_registration', {'id': registration.id}) }}" class="btn btn-default btn-xs"
-                           data-toggle="tooltip" data-placement="top" title="Annuler">
-                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                        </a>
-                    {% endif %}
-                </li>
-            {% else %}
-                <li>Pas (encore !) d'inscriptions</li>
+                        {% if is_granted("validate", registration) %}
+                            <a href="{{ path('gsadmin_validate_registration', {'id': registration.id}) }}" class="btn btn-default btn-xs"
+                               data-toggle="tooltip" data-placement="top" title="Valider">
+                                <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                            </a>
+                        {% endif %}
+                        {% if is_granted("wait", registration) %}
+                            <a href="{{ path('gsadmin_wait_registration', {'id': registration.id}) }}" class="btn btn-default btn-xs"
+                               data-toggle="tooltip" data-placement="top" title="Mettre en list d'attente">
+                                <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                            </a>
+                        {% endif %}
+                        {% if is_granted("cancel", registration) %}
+                            <a href="{{ path('gsadmin_cancel_registration', {'id': registration.id}) }}" class="btn btn-default btn-xs"
+                               data-toggle="tooltip" data-placement="top" title="Annuler">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </a>
+                        {% endif %}
+                    </li>
+                {% else %}
+                    <li>Pas (encore !) d'inscriptions</li>
+                {% endfor %}
+                </ul></li>
             {% endfor %}
         </ul>
     {% endif %}
