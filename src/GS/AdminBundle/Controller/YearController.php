@@ -179,4 +179,98 @@ class YearController extends Controller
         ));
     }
 
+    /**
+     * @Route("/year/{id}/balance", name="gsadmin_balance_year", requirements={"id": "\d+"})
+     * @Security("has_role('ROLE_TREASURER')")
+     */
+    public function indexTreasurerAction(Year $year, Request $request)
+    {
+        $listPaidRegistrations = $this->getDoctrine()->getManager()
+            ->getRepository('GSStructureBundle:Registration')
+            ->getRegistrationsForYearAndState($year, 'PAID')
+            ;
+        $listFreeRegistrations = $this->getDoctrine()->getManager()
+            ->getRepository('GSStructureBundle:Registration')
+            ->getRegistrationsForYearAndState($year, 'FREE')
+            ;
+
+        $result = array(
+            'number' => 0,
+            'total' => 0.0,
+            'activities' => array(),
+        );
+
+        foreach (array_merge($listPaidRegistrations, $listFreeRegistrations) as $registration) {
+            $topic = $registration->getTopic();
+            $activity = $topic->getActivity();
+            $category = $topic->getCategory();
+            $price = $category->getPrice();
+
+            if ($registration->getState() != 'FREE') {
+                // We need to find all the payment items to know what is the final price paid for the registration
+                $listPaymentItems = $this->getDoctrine()->getManager()
+                    ->getRepository('GSStructureBundle:PaymentItem')
+                    ->findPaidByRegistration($registration)
+                    ;
+                $item = end($listPaymentItems);
+                $discount = $item->getDiscount();
+            } else {
+                $price = 0.0;
+                $discount = null;
+            }
+
+            $activityName = $activity->getTitle();
+            if (!array_key_exists($activityName, $result['activities'])) {
+                $result['activities'][$activityName] = array(
+                    'categories' => array(),
+                    'number' => 0,
+                    'total' => 0.0,
+                );
+            }
+
+            $categoryName = $category->getName();
+            if (!array_key_exists($categoryName, $result['activities'][$activityName]['categories'])) {
+                $result['activities'][$activityName]['categories'][$categoryName] = array(
+                    'discounts' => array(),
+                    'number' => 0,
+                    'total' => 0.0,
+                );
+            }
+
+            if (null !== $discount) {
+                $discountName = $discount->getName();
+            } elseif ($registration->getState() == 'FREE') {
+                $discountName = 'Gratuit (profs)';
+            } else {
+                $discountName = 'Sans réduction';
+            }
+
+            if (!array_key_exists($discountName, $result['activities'][$activityName]['categories'][$categoryName]['discounts'])) {
+                $result['activities'][$activityName]['categories'][$categoryName]['discounts'][$discountName] = array(
+                    'price' => null === $discount ? $price : $price - $discount->getAmount($price),
+                    'number' => 0,
+                    'total' => 0.0,
+                );
+            }
+
+            $result['number'] += 1;
+            $result['activities'][$activityName]['number'] += 1;
+            $result['activities'][$activityName]['categories'][$categoryName]['number'] += 1;
+            $result['activities'][$activityName]['categories'][$categoryName]['discounts'][$discountName]['number'] += 1;
+            $result['activities'][$activityName]['categories'][$categoryName]['discounts'][$discountName]['total'] +=
+                    $result['activities'][$activityName]['categories'][$categoryName]['discounts'][$discountName]['price'];
+            $result['activities'][$activityName]['categories'][$categoryName]['total'] +=
+                    $result['activities'][$activityName]['categories'][$categoryName]['discounts'][$discountName]['price'];
+            $result['activities'][$activityName]['total'] +=
+                    $result['activities'][$activityName]['categories'][$categoryName]['discounts'][$discountName]['price'];
+            $result['total'] +=
+                    $result['activities'][$activityName]['categories'][$categoryName]['discounts'][$discountName]['price'];
+        }
+
+        return $this->render('GSAdminBundle:Year:balance.html.twig', array(
+            'year' => $year,
+            'result' => $result,
+        ));
+    }
+
 }

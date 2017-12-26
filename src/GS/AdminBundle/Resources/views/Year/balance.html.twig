@@ -1,0 +1,84 @@
+{% extends "GSAdminBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    <h2>Bilan de l'année : {{ year.title }}</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Prix unitaire</th>
+                <th>Quantité</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for activityName, activity in result.activities %}
+                <tr>
+                    <td>
+                        <strong>{{ activityName }}</strong>
+                    </td>
+                </tr>
+                    {% for categoryName, category in activity.categories %}
+                        <tr>
+                            <td style='padding-left: 40px;'>
+                                {{ categoryName }}
+                            </td>
+                            <td class="warning">
+                            </td>
+                            <td class="warning">
+                                {{ category.number }}
+                            </td>
+                            <td class="warning">
+                                {{ category.total -}}€
+                            </td>
+                        </tr>
+                        {% for discountName, discount in category.discounts %}
+                            <tr>
+                                <td style='padding-left: 80px;'>
+                                    {{ discountName }}
+                                </td>
+                                <td>
+                                    {{ discount.price -}}€
+                                </td>
+                                <td>
+                                    {{ discount.number }}
+                                </td>
+                                <td>
+                                    {{ discount.total -}}€
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% endfor %}
+                <tr class="danger">
+                    <td>
+                        <strong>Total "{{- activityName -}}"</strong>
+                    </td>
+                    <td></td>
+                    <td>
+                        {{ activity.number }}
+                    </td>
+                    <td>
+                        {{ activity.total -}}€
+                    </td>
+                </tr>
+            {% endfor %}
+            <tr class="danger" style='border: 2px solid;'>
+                <td>
+                    <strong>TOTAL DE L'ANNEE</strong>
+                </td>
+                <td>
+                </td>
+                <td>
+                    <strong>{{ result.number }}</strong>
+                </td>
+                <td>
+                    <strong>{{ result.total -}}€</strong>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+{% endblock %}

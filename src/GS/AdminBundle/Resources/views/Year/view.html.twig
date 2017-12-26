@@ -49,6 +49,12 @@
                 Supprimer l'année
             </a>
         {% endif %}
+        {% if is_granted("ROLE_TREASURER") %}
+            <a href="{{ path('gsadmin_balance_year', {'id': year.id}) }}" class="btn btn-default">
+                <span class="glyphicon glyphicon-euro" aria-hidden="true"></span>
+                Bilan de l'année
+            </a>
+        {% endif %}
     </p>
 
     <h3>Description</h3>
