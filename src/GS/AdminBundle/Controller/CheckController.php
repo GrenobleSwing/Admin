@@ -16,7 +16,7 @@ class CheckController extends Controller
 {
 
     /**
-     * @Route("/check/membership", name="gsadmin_check_membership")
+     * @Route("/check/membership", name="check_membership")
      * @Security("has_role('ROLE_ORGANIZER')")
      */
     public function addAction(Request $request)

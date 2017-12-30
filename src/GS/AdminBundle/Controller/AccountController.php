@@ -29,7 +29,7 @@ class AccountController extends Controller
     }
 
     /**
-     * @Route("/my_account", name="gsadmin_my_account")
+     * @Route("/my_account", name="my_account")
      * @Security("has_role('ROLE_USER')")
      */
     public function myAccountAction(Request $request)
@@ -47,7 +47,7 @@ class AccountController extends Controller
     }
 
     /**
-     * @Route("/my_registrations", name="gsadmin_my_registrations")
+     * @Route("/my_registrations", name="my_registrations")
      * @Security("has_role('ROLE_USER')")
      */
     public function myRegistrationsAction(Request $request)
@@ -67,7 +67,7 @@ class AccountController extends Controller
     }
 
     /**
-     * @Route("/my_payments", name="gsadmin_my_payments")
+     * @Route("/my_payments", name="my_payments")
      * @Security("has_role('ROLE_USER')")
      */
     public function myPaymentsAction(Request $request)
@@ -87,7 +87,7 @@ class AccountController extends Controller
     }
 
     /**
-     * @Route("/account/{id}", name="gsadmin_view_account", requirements={"id": "\d+"})
+     * @Route("/account/{id}", name="view_account", requirements={"id": "\d+"})
      * @Security("is_granted('view', account)")
      */
     public function getAction(Account $account, Request $request)
@@ -100,7 +100,7 @@ class AccountController extends Controller
     }
 
     /**
-     * @Route("/account", name="gsadmin_index_account")
+     * @Route("/account", name="index_account")
      * @Security("has_role('ROLE_ADMIN')")
      */
     public function cgetAction()
@@ -116,7 +116,7 @@ class AccountController extends Controller
     }
 
     /**
-     * @Route("/account/{id}/edit", name="gsadmin_edit_account", requirements={"id": "\d+"})
+     * @Route("/account/{id}/edit", name="edit_account", requirements={"id": "\d+"})
      * @Security("is_granted('edit', account)")
      */
     public function putAction(Account $account, Request $request)
@@ -139,7 +139,7 @@ class AccountController extends Controller
     }
 
     /**
-     * @Route("/account/{id}/picture", name="gsadmin_edit_account_picture", requirements={"id": "\d+"})
+     * @Route("/account/{id}/picture", name="edit_account_picture", requirements={"id": "\d+"})
      * @Security("is_granted('edit', account)")
      */
     public function putPictureAction(Account $account, Request $request)
@@ -162,7 +162,7 @@ class AccountController extends Controller
     }
 
     /**
-     * @Route("/my_balance", name="gsadmin_my_balance")
+     * @Route("/my_balance", name="my_balance")
      * @Security("has_role('ROLE_USER')")
      */
     public function myBalanceAction(Request $request)

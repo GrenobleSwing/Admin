@@ -10,10 +10,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * @Route("", name="gsadmin_")
+ */
 class YearController extends Controller
 {
     /**
-     * @Route("/year/{id}/open", name="gsadmin_open_year", requirements={"id": "\d+"})
+     * @Route("/year/{id}/open", name="open_year", requirements={"id": "\d+"})
      * @Security("is_granted('edit', year)")
      */
     public function openAction(Year $year, Request $request)
@@ -43,7 +46,7 @@ class YearController extends Controller
     }
 
     /**
-     * @Route("/year/{id}/close", name="gsadmin_close_year", requirements={"id": "\d+"})
+     * @Route("/year/{id}/close", name="close_year", requirements={"id": "\d+"})
      * @Security("is_granted('edit', year)")
      */
     public function closeAction(Year $year, Request $request)
@@ -73,7 +76,7 @@ class YearController extends Controller
     }
 
     /**
-     * @Route("/year/add/{id}", name="gsadmin_add_year")
+     * @Route("/year/add/{id}", name="add_year")
      * @Security("has_role('ROLE_ADMIN')")
      */
     public function addAction(Society $society, Request $request)
@@ -104,7 +107,7 @@ class YearController extends Controller
     }
 
     /**
-     * @Route("/year/{id}/delete", name="gsadmin_delete_year", requirements={"id": "\d+"})
+     * @Route("/year/{id}/delete", name="delete_year", requirements={"id": "\d+"})
      * @Security("is_granted('delete', year)")
      */
     public function deleteAction(Year $year, Request $request)
@@ -130,7 +133,7 @@ class YearController extends Controller
     }
 
     /**
-     * @Route("/year/{id}", name="gsadmin_view_year", requirements={"id": "\d+"})
+     * @Route("/year/{id}", name="view_year", requirements={"id": "\d+"})
      * @Security("is_granted('view', year)")
      */
     public function viewAction(Year $year)
@@ -141,7 +144,7 @@ class YearController extends Controller
     }
 
     /**
-     * @Route("/year", name="gsadmin_index_year")
+     * @Route("/year", name="index_year")
      * @Security("has_role('ROLE_USER')")
      */
     public function indexAction()
@@ -157,7 +160,7 @@ class YearController extends Controller
     }
 
     /**
-     * @Route("/year/{id}/edit", name="gsadmin_edit_year", requirements={"id": "\d+"})
+     * @Route("/year/{id}/edit", name="edit_year", requirements={"id": "\d+"})
      * @Security("is_granted('edit', year)")
      */
     public function editAction(Year $year, Request $request)
@@ -180,7 +183,7 @@ class YearController extends Controller
     }
 
     /**
-     * @Route("/year/{id}/balance", name="gsadmin_balance_year", requirements={"id": "\d+"})
+     * @Route("/year/{id}/balance", name="balance_year", requirements={"id": "\d+"})
      * @Security("has_role('ROLE_TREASURER')")
      */
     public function indexTreasurerAction(Year $year, Request $request)

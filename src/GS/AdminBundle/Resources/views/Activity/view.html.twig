@@ -1,5 +1,24 @@
 {% extends "GSAdminBundle::layout.html.twig" %}
 
+{% block stylesheets %}
+    {{ parent() }}
+
+    <style>
+        .badge-follower {
+            background-color: #ff66ff;
+        }
+        .badge-follower:hover {
+            background-color: #ff1aff;
+        }
+        .badge-leader {
+            background-color: #0066ff;
+        }
+        .badge-leader:hover {
+            background-color: #0052cc;
+        }
+    </style>
+{% endblock %}
+
 {% block gs_body %}
     {{ parent() }}
 
@@ -70,6 +89,12 @@
         {% for topic in activity.topics %}
             <li>
                 {{ macro_topic.print_title(topic) }}
+                {% if is_granted("moderate", topic) %}
+                    <span class="badge badge-leader">{{ countTopic[topic.id].leader.validated }} ({{ countTopic[topic.id].leader.waiting }}) L</span>
+                    {% if topic.type == 'couple' %}
+                        <span class="badge badge-follower">{{ countTopic[topic.id].follower.validated }} ({{ countTopic[topic.id].follower.waiting }}) F</span>
+                    {% endif %}
+                {% endif %}
                 {% if topic not in user_topics %}
                     <a href="{{ path('gsadmin_add_registration', {'id': topic.id}) }}" class="btn btn-default btn-xs">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> S'inscrire
@@ -128,6 +153,8 @@
             {% for category in activity.categories %}
                 <li>
                     {{ category.name }}
+                    <span class="badge badge-leader">{{ countCategory[category.id].leader.validated }} ({{ countCategory[category.id].leader.waiting }}) L</span>
+                    <span class="badge badge-follower">{{ countCategory[category.id].follower.validated }} ({{ countCategory[category.id].follower.waiting }}) F</span>
                     <a href="{{ path('gsadmin_view_category', {'id': category.id}) }}" class="btn btn-default btn-xs"
                             data-toggle="tooltip" data-placement="top" title="Voir">
                         <span class="glyphicon glyphicon-search" aria-hidden="true"></span>

@@ -17,7 +17,7 @@ class CategoryController extends Controller
 {
 
     /**
-     * @Route("/category/add/{id}", name="gsadmin_add_category", requirements={"id": "\d+"})
+     * @Route("/category/add/{id}", name="add_category", requirements={"id": "\d+"})
      * @Security("has_role('ROLE_ORGANIZER')")
      */
     public function postAction(Activity $activity, Request $request)
@@ -45,7 +45,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * @Route("/category/{id}", name="gsadmin_view_category", requirements={"id": "\d+"})
+     * @Route("/category/{id}", name="view_category", requirements={"id": "\d+"})
      * @Security("is_granted('view', category)")
      */
     public function viewAction(Category $category)
@@ -56,7 +56,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * @Route("/category", name="gsadmin_index_category")
+     * @Route("/category", name="index_category")
      * @Security("has_role('ROLE_ORGANIZER')")
      */
     public function indexAction()
@@ -72,7 +72,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * @Route("/category/{id}/edit", name="gsadmin_edit_category", requirements={"id": "\d+"})
+     * @Route("/category/{id}/edit", name="edit_category", requirements={"id": "\d+"})
      * @Security("is_granted('edit', category)")
      */
     public function editAction(Category $category, Request $request)
@@ -95,7 +95,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * @Route("/category/{id}/delete", name="gsadmin_delete_category", requirements={"id": "\d+"})
+     * @Route("/category/{id}/delete", name="delete_category", requirements={"id": "\d+"})
      * @Security("is_granted('delete', category)")
      */
     public function deleteAction(Category $category, Request $request)

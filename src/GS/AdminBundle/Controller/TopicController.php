@@ -165,10 +165,38 @@ class TopicController extends Controller
             ->findOneByUser($this->getUser())
             ;
 
+        $count = array();
+        $count['leader']['paid'] = $em
+            ->getRepository('GSStructureBundle:Registration')
+            ->countRegistrationsForTopicAndStateAndRole($topic, 'PAID', 'leader');
+
+        $count['leader']['validated'] = $em
+            ->getRepository('GSStructureBundle:Registration')
+            ->countRegistrationsForTopicAndStateAndRole($topic, 'VALIDATED', 'leader');
+
+        $count['leader']['waiting'] = $em
+            ->getRepository('GSStructureBundle:Registration')
+            ->countRegistrationsForTopicAndStateAndRole($topic, 'WAITING', 'leader');
+
+        if ($topic->getType() == 'couple') {
+            $count['follower']['paid'] = $em
+                ->getRepository('GSStructureBundle:Registration')
+                ->countRegistrationsForTopicAndStateAndRole($topic, 'PAID', 'follower');
+
+            $count['follower']['validated'] = $em
+                ->getRepository('GSStructureBundle:Registration')
+                ->countRegistrationsForTopicAndStateAndRole($topic, 'VALIDATED', 'follower');
+
+            $count['follower']['waiting'] = $em
+                ->getRepository('GSStructureBundle:Registration')
+                ->countRegistrationsForTopicAndStateAndRole($topic, 'WAITING', 'follower');
+        }
+
         $registrations = $em
             ->getRepository('GSStructureBundle:Registration')
             ->getRegistrationsForAccountAndTopic($account, $topic);
 
+        // TODO: Just look if there is a result (which means the user is registered for this topic).
         $topics = [];
         foreach ($registrations as $registration) {
             $topics[] = $registration->getTopic();
@@ -178,6 +206,7 @@ class TopicController extends Controller
             'topic' => $topic,
             'user_registrations' => $registrations,
             'user_topics' => $topics,
+            'count' => $count,
         ));
     }
 

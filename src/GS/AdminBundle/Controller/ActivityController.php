@@ -20,7 +20,7 @@ use Symfony\Component\HttpFoundation\Request;
 class ActivityController extends Controller
 {
     /**
-     * @Route("/activity/{id}/open", name="gsadmin_open_activity", requirements={"id": "\d+"})
+     * @Route("/activity/{id}/open", name="open_activity", requirements={"id": "\d+"})
      * @Security("is_granted('edit', activity)")
      */
     public function openAction(Activity $activity, Request $request)
@@ -55,7 +55,7 @@ class ActivityController extends Controller
     }
 
     /**
-     * @Route("/activity/{id}/close", name="gsadmin_close_activity", requirements={"id": "\d+"})
+     * @Route("/activity/{id}/close", name="close_activity", requirements={"id": "\d+"})
      * @Security("is_granted('edit', activity)")
      */
     public function closeAction(Activity $activity, Request $request)
@@ -85,7 +85,7 @@ class ActivityController extends Controller
     }
 
     /**
-     * @Route("/activity/add/{id}", name="gsadmin_add_activity", requirements={"id": "\d+"})
+     * @Route("/activity/add/{id}", name="add_activity", requirements={"id": "\d+"})
      * @Security("has_role('ROLE_ORGANIZER')")
      */
     public function addAction(Year $year, Request $request)
@@ -159,7 +159,7 @@ class ActivityController extends Controller
     }
 
     /**
-     * @Route("/activity/{id}/delete", name="gsadmin_delete_activity", requirements={"id": "\d+"})
+     * @Route("/activity/{id}/delete", name="delete_activity", requirements={"id": "\d+"})
      * @Security("is_granted('delete', activity)")
      */
     public function deleteAction(Activity $activity, Request $request)
@@ -188,7 +188,7 @@ class ActivityController extends Controller
     }
 
     /**
-     * @Route("/activity/{id}", name="gsadmin_view_activity", requirements={"id": "\d+"})
+     * @Route("/activity/{id}", name="view_activity", requirements={"id": "\d+"})
      * @Security("is_granted('view', activity)")
      */
     public function viewAction(Activity $activity)
@@ -208,14 +208,56 @@ class ActivityController extends Controller
             $topics[] = $registration->getTopic();
         }
 
+        $countTopic = array();
+        foreach ($activity->getTopics() as $topic) {
+            $countTopic[$topic->getId()]['leader']['validated'] = $em
+                ->getRepository('GSStructureBundle:Registration')
+                ->countPaidOrValidatedRegistrationsForTopicAndRole($topic, 'leader');
+
+            $countTopic[$topic->getId()]['leader']['waiting'] = $em
+                ->getRepository('GSStructureBundle:Registration')
+                ->countWaitingOrSubmittedRegistrationsForTopicAndRole($topic, 'leader');
+
+            if ($topic->getType() == 'couple') {
+                $countTopic[$topic->getId()]['follower']['validated'] = $em
+                    ->getRepository('GSStructureBundle:Registration')
+                    ->countPaidOrValidatedRegistrationsForTopicAndRole($topic, 'follower');
+
+                $countTopic[$topic->getId()]['follower']['waiting'] = $em
+                    ->getRepository('GSStructureBundle:Registration')
+                    ->countWaitingOrSubmittedRegistrationsForTopicAndRole($topic, 'follower');
+            }
+        }
+
+        $countCategory = array();
+        foreach ($activity->getCategories() as $category) {
+            $countCategory[$category->getId()]['leader']['validated'] = $em
+                ->getRepository('GSStructureBundle:Registration')
+                ->countPaidOrValidatedRegistrationsForCategoryAndRole($category, 'leader');
+
+            $countCategory[$category->getId()]['leader']['waiting'] = $em
+                ->getRepository('GSStructureBundle:Registration')
+                ->countWaitingOrSubmittedRegistrationsForCategoryAndRole($category, 'leader');
+
+            $countCategory[$category->getId()]['follower']['validated'] = $em
+                ->getRepository('GSStructureBundle:Registration')
+                ->countPaidOrValidatedRegistrationsForCategoryAndRole($category, 'follower');
+
+            $countCategory[$category->getId()]['follower']['waiting'] = $em
+                ->getRepository('GSStructureBundle:Registration')
+                ->countWaitingOrSubmittedRegistrationsForCategoryAndRole($category, 'follower');
+        }
+
         return $this->render('GSAdminBundle:Activity:view.html.twig', array(
             'activity' => $activity,
             'user_topics' => $topics,
+            'countTopic' => $countTopic,
+            'countCategory' => $countCategory,
         ));
     }
 
     /**
-     * @Route("/activity", name="gsadmin_index_activity")
+     * @Route("/activity", name="index_activity")
      * @Security("has_role('ROLE_USER')")
      */
     public function indexAction()
@@ -231,7 +273,7 @@ class ActivityController extends Controller
     }
 
     /**
-     * @Route("/activity/{id}/edit", name="gsadmin_edit_activity", requirements={"id": "\d+"})
+     * @Route("/activity/{id}/edit", name="edit_activity", requirements={"id": "\d+"})
      * @Security("is_granted('edit', activity)")
      */
     public function editAction(Activity $activity, Request $request)

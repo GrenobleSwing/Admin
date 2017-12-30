@@ -1,5 +1,24 @@
 {% extends "GSAdminBundle::layout.html.twig" %}
 
+{% block stylesheets %}
+    {{ parent() }}
+
+    <style>
+        .badge-follower {
+            background-color: #ff66ff;
+        }
+        .badge-follower:hover {
+            background-color: #ff1aff;
+        }
+        .badge-leader {
+            background-color: #0066ff;
+        }
+        .badge-leader:hover {
+            background-color: #0052cc;
+        }
+    </style>
+{% endblock %}
+
 {% block gs_body %}
     {{ parent() }}
 
@@ -94,11 +113,26 @@
         <ul>
             {% for state in ['paid', 'validated', 'waiting', 'submitted'] %}
                 {% if state == 'paid' %}
-                    <li> Payées :
+                    <li> Payées
+                        <span class="badge badge-leader">{{ count.leader.paid }} L</span>
+                        {% if topic.type == 'couple' %}
+                            <span class="badge badge-follower">{{ count.follower.paid }} F</span>
+                        {% endif %}
+                        :
                 {% elseif state == 'validated' %}
-                    <li> Validées :
+                    <li> Validées
+                        <span class="badge badge-leader">{{ count.leader.validated }} L</span>
+                        {% if topic.type == 'couple' %}
+                            <span class="badge badge-follower">{{ count.follower.validated }} F</span>
+                        {% endif %}
+                        :
                 {% elseif state == 'waiting' %}
-                    <li> En liste d'attente :
+                    <li> En liste d'attente
+                        <span class="badge badge-leader">{{ count.leader.waiting }} L</span>
+                        {% if topic.type == 'couple' %}
+                            <span class="badge badge-follower">{{ count.follower.waiting }} F</span>
+                        {% endif %}
+                        :
                 {% else %}
                     <li> Soumises :
                 {% endif %}
