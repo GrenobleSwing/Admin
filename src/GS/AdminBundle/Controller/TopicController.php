@@ -62,7 +62,7 @@ class TopicController extends Controller
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $topic->setState('CLOSE');
+            $topic->close();
             $em = $this->getDoctrine()->getManager();
             $em->flush();
 

@@ -60,7 +60,7 @@ class YearController extends Controller
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $year->setState('CLOSE');
+            $year->close();
             $em = $this->getDoctrine()->getManager();
             $em->flush();
 

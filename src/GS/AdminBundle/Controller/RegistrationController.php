@@ -257,7 +257,7 @@ class RegistrationController extends Controller
 
     /**
      * @Route("/registration", name="gsadmin_index_registration")
-     * @Security("has_role('ROLE_ORGANIZER')")
+     * @Security("has_role('ROLE_SECRETARY')")
      */
     public function indexAction()
     {
@@ -266,7 +266,7 @@ class RegistrationController extends Controller
 
     /**
      * @Route("/registration/json", name="gsadmin_index_json_registration")
-     * @Security("has_role('ROLE_ORGANIZER')")
+     * @Security("has_role('ROLE_SECRETARY')")
      */
     public function indexJsonAction()
     {

@@ -47,8 +47,15 @@
         Modifier
     </a>
     <br>
-    Template des emails (à personnaliser selon vos besoins)
+    Template des emails de paiement réussi (à personnaliser selon vos besoins)
     <a href="{{ path('lexik_mailer.email_edit', {'emailId': society.emailPaymentTemplate.id}) }}" class="btn btn-default btn-xs"
+            data-toggle="tooltip" data-placement="top" title="Editer">
+        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+        Modifier
+    </a>
+    <br>
+    Template des emails de paiement en pluseurs fois échoué (à personnaliser selon vos besoins)
+    <a href="{{ path('lexik_mailer.email_edit', {'emailId': society.emailPaymentFailureTemplate.id}) }}" class="btn btn-default btn-xs"
             data-toggle="tooltip" data-placement="top" title="Editer">
         <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
         Modifier

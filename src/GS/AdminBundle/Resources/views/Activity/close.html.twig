@@ -9,7 +9,12 @@
         Etes-vous certain de vouloir fermer l'activité "{{ activity.title }}" ?
     </p>
 
-    <form action="{{ path('gsadmin_delete_activity', {'id': activity.id}) }}" method="post">
+    <div class="alert alert-danger" role="alert">
+        <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
+        Cette action fermera tous les cours/ateliers/... de l'activité !
+    </div>
+
+    <form action="{{ path('gsadmin_close_activity', {'id': activity.id}) }}" method="post">
         <a href="{{ path('gsadmin_view_activity', {'id': activity.id}) }}" class="btn btn-default">
             <i class="glyphicon glyphicon-chevron-left"></i>
             Retour a l'activité

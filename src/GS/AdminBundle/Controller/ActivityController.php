@@ -69,7 +69,7 @@ class ActivityController extends Controller
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $activity->setState('CLOSE');
+            $activity->close();
             $em = $this->getDoctrine()->getManager();
             $em->flush();
 
