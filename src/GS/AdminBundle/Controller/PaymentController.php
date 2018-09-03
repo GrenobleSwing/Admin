@@ -28,6 +28,7 @@ class PaymentController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $payment->setState('PAID');
             $em->persist($payment);
 
             $account = $payment->getAccount();
@@ -42,7 +43,7 @@ class PaymentController extends Controller
                 $invoice->setNumber($prefix . sprintf('%05d', $invoiceNumber));
                 $invoice->setDate($payment->getDate());
 
-                $this->get('gstoolbox.payment.service')->sendEmail($payment);
+                $this->get('gstoolbox.payment.service')->sendEmailSuccess($payment);
 
                 $em->persist($invoice);
             }
