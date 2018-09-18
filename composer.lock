@@ -1645,16 +1645,16 @@
         },
         {
             "name": "giggsey/libphonenumber-for-php",
-            "version": "8.9.12",
+            "version": "8.9.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/giggsey/libphonenumber-for-php.git",
-                "reference": "b906325b1bcf99309bc10bff7cbdc1ed8fbcf774"
+                "reference": "cb4e0cf25f742a838b9d53ed6a7088c4f24086f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/b906325b1bcf99309bc10bff7cbdc1ed8fbcf774",
-                "reference": "b906325b1bcf99309bc10bff7cbdc1ed8fbcf774",
+                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/cb4e0cf25f742a838b9d53ed6a7088c4f24086f3",
+                "reference": "cb4e0cf25f742a838b9d53ed6a7088c4f24086f3",
                 "shasum": ""
             },
             "require": {
@@ -1709,7 +1709,7 @@
                 "phonenumber",
                 "validation"
             ],
-            "time": "2018-08-23T10:23:25+00:00"
+            "time": "2018-09-10T15:26:43+00:00"
         },
         {
             "name": "giggsey/locale",
@@ -1889,12 +1889,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrenobleSwing/ToolboxBundle.git",
-                "reference": "d3ed1974c6db96f80295f8a1114862e31c80ffc3"
+                "reference": "78696ff1c6bb98f615a6f724fbe4f4a6ad01b874"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrenobleSwing/ToolboxBundle/zipball/d3ed1974c6db96f80295f8a1114862e31c80ffc3",
-                "reference": "d3ed1974c6db96f80295f8a1114862e31c80ffc3",
+                "url": "https://api.github.com/repos/GrenobleSwing/ToolboxBundle/zipball/78696ff1c6bb98f615a6f724fbe4f4a6ad01b874",
+                "reference": "78696ff1c6bb98f615a6f724fbe4f4a6ad01b874",
                 "shasum": ""
             },
             "require": {
@@ -1934,7 +1934,7 @@
                 "source": "https://github.com/GrenobleSwing/ToolboxBundle/tree/master",
                 "issues": "https://github.com/GrenobleSwing/ToolboxBundle/issues"
             },
-            "time": "2018-09-03T09:47:31+00:00"
+            "time": "2018-09-18T07:55:56+00:00"
         },
         {
             "name": "incenteev/composer-parameter-handler",
