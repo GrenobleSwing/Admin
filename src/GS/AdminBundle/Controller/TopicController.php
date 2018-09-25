@@ -170,6 +170,10 @@ class TopicController extends Controller
             ->getRepository('GSStructureBundle:Registration')
             ->countRegistrationsForTopicAndStateAndRole($topic, 'PAID', 'leader');
 
+        $count['leader']['payment_in_progress'] = $em
+            ->getRepository('GSStructureBundle:Registration')
+            ->countRegistrationsForTopicAndStateAndRole($topic, 'PAYMENT_IN_PROGRESS', 'leader');
+
         $count['leader']['validated'] = $em
             ->getRepository('GSStructureBundle:Registration')
             ->countRegistrationsForTopicAndStateAndRole($topic, 'VALIDATED', 'leader');
@@ -182,6 +186,10 @@ class TopicController extends Controller
             $count['follower']['paid'] = $em
                 ->getRepository('GSStructureBundle:Registration')
                 ->countRegistrationsForTopicAndStateAndRole($topic, 'PAID', 'follower');
+
+            $count['follower']['payment_in_progress'] = $em
+                ->getRepository('GSStructureBundle:Registration')
+                ->countRegistrationsForTopicAndStateAndRole($topic, 'PAYMENT_IN_PROGRESS', 'follower');
 
             $count['follower']['validated'] = $em
                 ->getRepository('GSStructureBundle:Registration')

@@ -119,6 +119,13 @@
                             <span class="badge badge-follower">{{ count.follower.paid }} F</span>
                         {% endif %}
                         :
+                {% elseif state == 'payment_in_progress' %}
+                    <li> Paiement en cours (paiement en plusieurs fois)
+                        <span class="badge badge-leader">{{ count.leader.payment_in_progress }} L</span>
+                        {% if topic.type == 'couple' %}
+                            <span class="badge badge-follower">{{ count.follower.payment_in_progress }} F</span>
+                        {% endif %}
+                        :
                 {% elseif state == 'validated' %}
                     <li> Validées
                         <span class="badge badge-leader">{{ count.leader.validated }} L</span>
