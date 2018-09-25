@@ -1889,12 +1889,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrenobleSwing/ToolboxBundle.git",
-                "reference": "78696ff1c6bb98f615a6f724fbe4f4a6ad01b874"
+                "reference": "d08e21f7e619f560799d8751b3cb9f87db2e8088"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrenobleSwing/ToolboxBundle/zipball/78696ff1c6bb98f615a6f724fbe4f4a6ad01b874",
-                "reference": "78696ff1c6bb98f615a6f724fbe4f4a6ad01b874",
+                "url": "https://api.github.com/repos/GrenobleSwing/ToolboxBundle/zipball/d08e21f7e619f560799d8751b3cb9f87db2e8088",
+                "reference": "d08e21f7e619f560799d8751b3cb9f87db2e8088",
                 "shasum": ""
             },
             "require": {
@@ -1934,7 +1934,7 @@
                 "source": "https://github.com/GrenobleSwing/ToolboxBundle/tree/master",
                 "issues": "https://github.com/GrenobleSwing/ToolboxBundle/issues"
             },
-            "time": "2018-09-18T07:55:56+00:00"
+            "time": "2018-09-25T09:20:32+00:00"
         },
         {
             "name": "incenteev/composer-parameter-handler",
