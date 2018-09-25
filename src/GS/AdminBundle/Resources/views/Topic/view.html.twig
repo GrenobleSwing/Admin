@@ -111,7 +111,7 @@
     {% if is_granted("moderate", topic) %}
         <h3>Liste des inscriptions :</h3>
         <ul>
-            {% for state in ['paid', 'validated', 'waiting', 'submitted'] %}
+            {% for state in ['paid', 'payment_in_progress', 'validated', 'waiting', 'submitted'] %}
                 {% if state == 'paid' %}
                     <li> Payées
                         <span class="badge badge-leader">{{ count.leader.paid }} L</span>
