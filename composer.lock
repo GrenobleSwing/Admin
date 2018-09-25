@@ -1821,12 +1821,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrenobleSwing/StructureBundle.git",
-                "reference": "0242de747577110a2ff7872d8cac8fa78a607c54"
+                "reference": "418827c655e885e524f531e005ebecd9b5976980"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrenobleSwing/StructureBundle/zipball/0242de747577110a2ff7872d8cac8fa78a607c54",
-                "reference": "0242de747577110a2ff7872d8cac8fa78a607c54",
+                "url": "https://api.github.com/repos/GrenobleSwing/StructureBundle/zipball/418827c655e885e524f531e005ebecd9b5976980",
+                "reference": "418827c655e885e524f531e005ebecd9b5976980",
                 "shasum": ""
             },
             "require": {
@@ -1880,7 +1880,7 @@
                 "source": "https://github.com/GrenobleSwing/StructureBundle/tree/master",
                 "issues": "https://github.com/GrenobleSwing/StructureBundle/issues"
             },
-            "time": "2018-09-25T08:59:08+00:00"
+            "time": "2018-09-25T19:43:35+00:00"
         },
         {
             "name": "gs/toolbox",
