@@ -1,0 +1,10 @@
+{% extends "GSAdminBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    <h2>Envoyer un email aux inscrits à un cours/niveau</h2>
+
+    {{ form(form) }}
+
+{% endblock %}

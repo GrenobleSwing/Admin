@@ -12,6 +12,7 @@
                 <th>Identité</th>
                 <th>Date</th>
                 <th>Montant</th>
+                <th>Statut</th>
             </tr>
         <thead>
         <tfoot>
@@ -20,6 +21,7 @@
                 <th>Identité</th>
                 <th>Date</th>
                 <th>Montant</th>
+                <th>Statut</th>
             </tr>
         </tfoot>
     </table>
@@ -63,7 +65,8 @@
                         "render": function ( data, type, full, meta ) {
                             return full.amount + '&euro;';
                         }
-                    }
+                    },
+                    { "data": 'state' }
                 ],
                 "buttons": [
                     'copy', 'csv', 'excel', 'pdf', 'print'

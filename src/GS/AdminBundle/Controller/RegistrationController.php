@@ -95,7 +95,7 @@ class RegistrationController extends Controller
             $em = $this->getDoctrine()->getManager();
 
             // If the registration is not paid, there is no need to keep it.
-            if ($registration->getState() != 'PAID') {
+            if ($registration->getState() != 'PAID' && $registration->getState() != 'PAYMENT_IN_PROGRESS') {
                 $em->remove($registration);
             }
 

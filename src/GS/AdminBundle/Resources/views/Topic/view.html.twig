@@ -34,6 +34,12 @@
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
             Retour à l'activité
         </a>
+        {% if is_granted("moderate", topic) %}
+            <a href="{{ path('gsadmin_email_topic', {'id': topic.id}) }}" class="btn btn-default">
+                <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                Email aux inscrits
+            </a>
+        {% endif %}
         {% if is_granted("open", topic) %}
             <a href="{{ path('gsadmin_open_topic', {'id': topic.id}) }}" class="btn btn-default">
                 <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>

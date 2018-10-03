@@ -2,6 +2,7 @@
 
 namespace GS\AdminBundle\Controller;
 
+use GS\AdminBundle\Form\Type\TopicEmailType;
 use GS\StructureBundle\Entity\Activity;
 use GS\StructureBundle\Entity\Topic;
 use GS\StructureBundle\Form\Type\TopicType;
@@ -200,20 +201,20 @@ class TopicController extends Controller
                 ->countRegistrationsForTopicAndStateAndRole($topic, 'WAITING', 'follower');
         }
 
-        $registrations = $em
+        $userRegistrations = $em
             ->getRepository('GSStructureBundle:Registration')
             ->getRegistrationsForAccountAndTopic($account, $topic);
 
         // TODO: Just look if there is a result (which means the user is registered for this topic).
-        $topics = [];
-        foreach ($registrations as $registration) {
-            $topics[] = $registration->getTopic();
+        $userTopics = [];
+        foreach ($userRegistrations as $registration) {
+            $userTopics[] = $registration->getTopic();
         }
 
         return $this->render('GSAdminBundle:Topic:view.html.twig', array(
             'topic' => $topic,
-            'user_registrations' => $registrations,
-            'user_topics' => $topics,
+            'user_registrations' => $userRegistrations,
+            'user_topics' => $userTopics,
             'count' => $count,
         ));
     }
@@ -263,5 +264,69 @@ class TopicController extends Controller
                     'form' => $form->createView(),
         ));
     }
+
+    /**
+     * @Route("/topic/{id}/email", name="gsadmin_email_topic", requirements={"id": "\d+"})
+     * @Security("is_granted('moderate', topic)")
+     */
+    public function emailAction(Topic $topic, Request $request)
+    {
+        $defaultData = array('to' => 'all');
+        $form = $this->createForm(TopicEmailType::class, $defaultData);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+
+            $to = array();
+            foreach ($topic->getRegistrations() as $registration) {
+                if ($data['to'] == 'all') {
+                    array_push($to, $registration->getAccount()->getEmail());
+                } elseif ($data['to'] == 'paid' &&
+                        ($registration->getState() == "PAID" ||
+                        $registration->getState() == "PAYMENT_IN_PROGRESS" ||
+                        $registration->getState() == "FREE")) {
+                    array_push($to, $registration->getAccount()->getEmail());
+                } elseif ($data['to'] == 'validated' && $registration->getState() == "VALIDATED") {
+                    array_push($to, $registration->getAccount()->getEmail());
+                } elseif ($data['to'] == 'waiting' && $registration->getState() == "WAITING") {
+                    array_push($to, $registration->getAccount()->getEmail());
+                } elseif ($data['to'] == 'submitted' && $registration->getState() == "SUBMITTED") {
+                    array_push($to, $registration->getAccount()->getEmail());
+                }
+            }
+
+            $message = (new \Swift_Message())
+                ->setSubject($data['subject'])
+                ->setFrom(['info@grenobleswing.com' => 'Grenoble Swing'])
+                ->setReplyTo($this->getUser()->getEmail())
+                ->setTo($this->getUser()->getEmail())
+                ->setBcc($to)
+                ->setBody(
+                    $data['content'],
+                    'text/html'
+                )
+            ;
+
+            $this->get('mailer')->send($message);
+
+            $request->getSession()->getFlashBag()->add('success', 'Email bien envoyé.');
+
+            return $this->redirectToRoute('gsadmin_view_topic', array('id' => $topic->getId()));
+        }
+
+        return $this->render('GSAdminBundle:Topic:email.html.twig', array(
+                    'form' => $form->createView(),
+        ));
+    }
+
+//    private function currentAccount()
+//    {
+//        $account = $this->getDoctrine()->getManager()
+//            ->getRepository('GSStructureBundle:Account')
+//            ->findOneByUser($this->getUser())
+//            ;
+//        return $account;
+//    }
 
 }
