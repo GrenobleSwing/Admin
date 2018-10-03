@@ -70,6 +70,9 @@ class ActivityController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $activity->close();
+
+            $this->get('gstoolbox.registration.service')->cleanActivityRegistrations($activity);
+
             $em = $this->getDoctrine()->getManager();
             $em->flush();
 

@@ -64,6 +64,9 @@ class TopicController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $topic->close();
+
+            $this->get('gstoolbox.registration.service')->cleanTopicRegistrations($topic);
+
             $em = $this->getDoctrine()->getManager();
             $em->flush();
 

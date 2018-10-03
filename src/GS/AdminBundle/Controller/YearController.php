@@ -61,6 +61,9 @@ class YearController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $year->close();
+
+            $this->get('gstoolbox.registration.service')->cleanYearRegistrations($year);
+
             $em = $this->getDoctrine()->getManager();
             $em->flush();
 
