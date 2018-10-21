@@ -1,0 +1,17 @@
+{% extends "GSAdminBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    <h3>Liste des paiements manquant dans la BDD</h3>
+    <ul>
+        {% for ref in listRef %}
+            <li>
+                {{ ref }}
+            </li>
+        {% else %}
+            <li>Tout les paiements sont bien enregistrés</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "GSAdminBundle::layout.html.twig" %}
+
+{% block gs_body %}
+    {{ parent() }}
+
+    <h2>Verifier si des paiements CB n'ont pas été oubliés</h2>
+
+    {{ include("GSAdminBundle:Check:form.html.twig") }}
+
+{% endblock %}

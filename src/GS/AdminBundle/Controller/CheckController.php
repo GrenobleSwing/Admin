@@ -19,7 +19,7 @@ class CheckController extends Controller
      * @Route("/check/membership", name="check_membership")
      * @Security("has_role('ROLE_ORGANIZER')")
      */
-    public function addAction(Request $request)
+    public function memberAction(Request $request)
     {
         $defaultData = array('message' => 'Type your message here');
         $form = $this->createFormBuilder($defaultData)
@@ -57,12 +57,58 @@ class CheckController extends Controller
             }
             fclose($handle);
 
-            return $this->render('GSAdminBundle:Check:view.html.twig', array(
+            return $this->render('GSAdminBundle:Check:view_member.html.twig', array(
                 'listNotMember' => $listNotMember,
             ));
         }
 
         return $this->render('GSAdminBundle:Check:membership.html.twig', array(
+            'form' => $form->createView(),
+        ));
+    }
+
+    /**
+     * @Route("/check/payment", name="check_payment")
+     * @Security("has_role('ROLE_TREASURER')")
+     */
+    public function paymentAction(Request $request)
+    {
+        $defaultData = array('message' => 'Type your message here');
+        $form = $this->createFormBuilder($defaultData)
+            ->add('file', FileType::class, array(
+                'label' => 'Fichier contenant les références des paiements à vérifier (une référence par ligne)',
+            ))
+            ->add('send', SubmitType::class, array(
+                'label' => 'Vérifier',
+            ))
+            ->getForm();
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            $file = $data['file'];
+            $handle = fopen($file->getPathname(), "r");
+            $missingPayments = [];
+            while (($line = fgets($handle)) !== false) {
+                $ref = trim($line);
+
+                $payment = $this->getDoctrine()->getManager()
+                    ->getRepository('GSStructureBundle:Payment')
+                    ->findOneByRef($ref)
+                    ;
+
+                if ($payment === null) {
+                    $missingPayments[] = $ref;
+                }
+            }
+            fclose($handle);
+
+            return $this->render('GSAdminBundle:Check:view_payment.html.twig', array(
+                'listRef' => $missingPayments,
+            ));
+        }
+
+        return $this->render('GSAdminBundle:Check:payment.html.twig', array(
             'form' => $form->createView(),
         ));
     }

@@ -67,6 +67,7 @@
         "symfony/assetic-bundle": "^2.8",
         "symfony/monolog-bundle": "^3.0",
         "symfony/polyfill-apcu": "^1.0",
+        "symfony/security": "^4.0",
         "symfony/swiftmailer-bundle": "^2.3",
         "vich/uploader-bundle": "~1.4"
     },

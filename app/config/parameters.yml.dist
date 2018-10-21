@@ -11,7 +11,7 @@ parameters:
     # database_path: "%kernel.root_dir%/data.db3"
 
     # For doctrine/dbal >= 2.5
-    mysql_server_version: 5.6
+    mysql_server_version: 5.5
 
     mailer_transport:  smtp
     mailer_auth_mode:  ~

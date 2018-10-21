@@ -1,34 +1,38 @@
 FROM php:5.6-apache
+#FROM php:7.2-apache
 
-RUN apt-get update
-RUN apt-get install -y apt-utils
+RUN apt-get update && apt-get install -y apt-utils
 RUN apt-get update && apt-get install -y \
     libxml2 libxml2-dev xml-core \
     libmcrypt-dev \
     imagemagick \
     libcurl4-openssl-dev \
     libicu-dev \
-    libpng12-dev \
-    php5-apcu \
+    libpng-dev \
     zip \
     git \
     wget
 
-# Install PDO MySQL driver
-# See https://github.com/docker-library/php/issues/62
-RUN docker-php-ext-install pdo pdo_mysql mysql mysqli
-RUN docker-php-ext-install ctype
-RUN docker-php-ext-install iconv
-RUN docker-php-ext-install json
-RUN docker-php-ext-install tokenizer
-RUN docker-php-ext-install xml
-RUN docker-php-ext-install mcrypt
-RUN docker-php-ext-install dom
-RUN docker-php-ext-install curl
-RUN docker-php-ext-install intl
-RUN docker-php-ext-install opcache
-RUN docker-php-ext-install mbstring
-RUN docker-php-ext-install gd
+#RUN pecl install apcu-5.1.12 \
+    # Install PDO MySQL driver
+    # See https://github.com/docker-library/php/issues/62
+#    && docker-php-ext-enable apcu \
+RUN pecl install apcu-4.0.11 \
+    # Install PDO MySQL driver
+    # See https://github.com/docker-library/php/issues/62
+    && docker-php-ext-enable apcu \
+    && docker-php-ext-install pdo pdo_mysql mysqli \
+    && docker-php-ext-install ctype \
+    && docker-php-ext-install iconv \
+    && docker-php-ext-install json \
+    && docker-php-ext-install tokenizer \
+    && docker-php-ext-install xml \
+    && docker-php-ext-install dom \
+    && docker-php-ext-install curl \
+    && docker-php-ext-install intl \
+    && docker-php-ext-install opcache \
+    && docker-php-ext-install mbstring \
+    && docker-php-ext-install gd
 
 # Set timezone
 RUN rm /etc/localtime
