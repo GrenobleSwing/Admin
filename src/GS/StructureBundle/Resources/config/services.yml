@@ -1,0 +1,91 @@
+services:
+#    gs_structure.example:
+#        class: GS\StructureBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+    gs_structure.handler.relation:
+        class: GS\StructureBundle\Serializer\RelationsHandler
+        arguments:
+            - "@doctrine.orm.entity_manager"
+        tags:
+            - { name: jms_serializer.handler, type: Relation, direction: serialization, format: json, method: serializeRelation}
+            - { name: jms_serializer.handler, type: Relation, direction: deserialization, format: json, method: deserializeRelation}
+            - { name: jms_serializer.handler, type: Relation<?>, direction: serialization, format: json, method: serializeRelation}
+            - { name: jms_serializer.handler, type: Relation<?>, direction: deserialization, format: json, method: deserializeRelation}
+
+    gs_structure.user.subscriber:
+        class: GS\StructureBundle\EventSubscriber\UserSubscriber
+        arguments:
+            - "@doctrine.orm.entity_manager"
+        tags:
+            - { name: kernel.event_subscriber }
+
+    gs_structure.account_voter:
+        class: GS\StructureBundle\Security\AccountVoter
+        arguments: ['@security.access.decision_manager']
+        public: false
+        tags:
+            - { name: security.voter }
+
+    gs_structure.activity_voter:
+        class: GS\StructureBundle\Security\ActivityVoter
+        arguments: ['@security.access.decision_manager']
+        public: false
+        tags:
+            - { name: security.voter }
+
+    gs_structure.category_discount_voter:
+        class: GS\StructureBundle\Security\CategoryDiscountVoter
+        arguments: ['@security.access.decision_manager']
+        public: false
+        tags:
+            - { name: security.voter }
+
+    gs_structure.certificate_voter:
+        class: GS\StructureBundle\Security\CertificateVoter
+        arguments: ['@security.access.decision_manager']
+        public: false
+        tags:
+            - { name: security.voter }
+
+    gs_structure.invoice_voter:
+        class: GS\StructureBundle\Security\InvoiceVoter
+        arguments: ['@security.access.decision_manager']
+        public: false
+        tags:
+            - { name: security.voter }
+
+    gs_structure.payment_voter:
+        class: GS\StructureBundle\Security\PaymentVoter
+        arguments: ['@security.access.decision_manager']
+        public: false
+        tags:
+            - { name: security.voter }
+
+    gs_structure.registration_voter:
+        class: GS\StructureBundle\Security\RegistrationVoter
+        arguments: ['@security.access.decision_manager']
+        public: false
+        tags:
+            - { name: security.voter }
+
+    gs_structure.topic_voter:
+        class: GS\StructureBundle\Security\TopicVoter
+        arguments: ['@security.access.decision_manager']
+        public: false
+        tags:
+            - { name: security.voter }
+
+    gs_structure.venue_voter:
+        class: GS\StructureBundle\Security\VenueVoter
+        arguments: ['@security.access.decision_manager']
+        public: false
+        tags:
+            - { name: security.voter }
+
+    gs_structure.year_voter:
+        class: GS\StructureBundle\Security\YearVoter
+        arguments: ['@security.access.decision_manager']
+        public: false
+        tags:
+            - { name: security.voter }

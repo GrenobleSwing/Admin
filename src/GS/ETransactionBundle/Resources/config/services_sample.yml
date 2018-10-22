@@ -1,0 +1,9 @@
+parameters:
+    gs_etran.sample_ipn_listener.class: GS\ETransactionBundle\EventListener\SampleIpnListener
+
+services:
+    gs_etran.sample_ipn_listener:
+        class:     %gs_etran.sample_ipn_listener.class%
+        arguments: [ %kernel.root_dir%, @filesystem ]
+        tags:
+            - { name: kernel.event_listener, event: gs_etran.ipn.received, method: onIpnReceived }

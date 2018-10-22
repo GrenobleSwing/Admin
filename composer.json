@@ -20,18 +20,6 @@
         {
             "type": "vcs",
             "url": "https://github.com/GrenobleSwing/Magallanes"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/GrenobleSwing/ETransactionBundle"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/GrenobleSwing/StructureBundle"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/GrenobleSwing/ToolboxBundle"
         }
     ],
     "require": {
@@ -47,9 +35,6 @@
         "egulias/email-validator": "~2.1",
         "friendsofsymfony/jsrouting-bundle": "^1.6",
         "friendsofsymfony/user-bundle": "~2.0",
-        "gs/etransaction": "dev-master",
-        "gs/structure": "dev-master",
-        "gs/toolbox": "dev-master",
         "incenteev/composer-parameter-handler": "^2.0",
         "jms/serializer-bundle": "^1.0",
         "knplabs/knp-menu-bundle": "^2.0",

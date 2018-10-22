@@ -1,0 +1,7 @@
+gs_etran_config:
+    type:     annotation
+    resource: GS\ETransactionBundle\Controller\ConfigController
+
+gs_etran_ipn:
+    type:     annotation
+    resource: GS\ETransactionBundle\Controller\IpnController
