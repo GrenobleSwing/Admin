@@ -5,7 +5,6 @@ namespace GS\StructureBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Hateoas\Configuration\Annotation as Hateoas;
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\SerializedName;
 use JMS\Serializer\Annotation\Type;
@@ -19,26 +18,6 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 /**
  * Account
  *
- * @Hateoas\Relation(
- *     "self",
- *     href = @Hateoas\Route(
- *         "gs_api_get_account",
- *         parameters = { "account" = "expr(object.getId())" }
- *     ),
- *     exclusion = @Hateoas\Exclusion(
- *         excludeIf = "expr(not is_granted('view', object))"
- *     )
- * )
- * @Hateoas\Relation(
- *     "edit",
- *     href = @Hateoas\Route(
- *         "gs_api_edit_account",
- *         parameters = { "account" = "expr(object.getId())" }
- *     ),
- *     exclusion = @Hateoas\Exclusion(
- *         excludeIf = "expr(not is_granted('edit', object))"
- *     )
- * )
  * @ORM\Entity
  * @Vich\Uploadable
  * @UniqueEntity("email")

@@ -4,23 +4,12 @@ namespace GS\StructureBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-use Hateoas\Configuration\Annotation as Hateoas;
 use JMS\Serializer\Annotation\Type;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Payment
  *
- * @Hateoas\Relation(
- *     "self",
- *     href = @Hateoas\Route(
- *         "gs_api_get_payment",
- *         parameters = { "payment" = "expr(object.getId())" }
- *     ),
- *     exclusion = @Hateoas\Exclusion(
- *         excludeIf = "expr(not is_granted('view', object))"
- *     )
- * )
  * @ORM\Entity(repositoryClass="GS\StructureBundle\Repository\PaymentRepository")
  */
 class Payment

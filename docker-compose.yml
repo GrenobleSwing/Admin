@@ -7,15 +7,12 @@ services:
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_ROOT_HOST=%
     volumes:
-      - data-volume:/var/lib/mysql
+      - dbdata:/var/lib/mysql
 
   php:
     build: .docker/php
     volumes:
-      - .:/var/www/html
-      - ../StructureBundle:/var/www/StructureBundle
-      - ../ToolboxBundle:/var/www/ToolboxBundle
-      - ../ETransactionBundle:/var/www/ETransactionBundle
+      - .:/code
     ports:
       - 8080:80
     environment:
@@ -40,4 +37,4 @@ services:
 #      - .docker/elk/logstash/patterns:/opt/logstash/patterns
 
 volumes:
-  data-volume:
+  dbdata:

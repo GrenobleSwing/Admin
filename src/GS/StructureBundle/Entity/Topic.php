@@ -4,7 +4,6 @@ namespace GS\StructureBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-use Hateoas\Configuration\Annotation as Hateoas;
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\SerializedName;
 use JMS\Serializer\Annotation\Type;
@@ -14,26 +13,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Topic
  *
- * @Hateoas\Relation(
- *     "self",
- *     href = @Hateoas\Route(
- *         "gs_api_get_topic",
- *         parameters = { "topic" = "expr(object.getId())" }
- *     ),
- *     exclusion = @Hateoas\Exclusion(
- *         excludeIf = "expr(not is_granted('view', object))"
- *     )
- * )
- * @Hateoas\Relation(
- *     "new_registration",
- *     href = @Hateoas\Route(
- *         "gs_api_new_topic_registration",
- *         parameters = { "topic" = "expr(object.getId())" }
- *     ),
- *     exclusion = @Hateoas\Exclusion(
- *         excludeIf = "expr(not is_granted(['ROLE_USER']))"
- *     )
- * )
  * @ORM\Entity(repositoryClass="GS\StructureBundle\Repository\TopicRepository")
  */
 class Topic

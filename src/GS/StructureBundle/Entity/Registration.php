@@ -4,7 +4,6 @@ namespace GS\StructureBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Hateoas\Configuration\Annotation as Hateoas;
 use JMS\Serializer\Annotation\SerializedName;
 use JMS\Serializer\Annotation\Type;
 use JMS\Serializer\Annotation\VirtualProperty;
@@ -13,37 +12,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Registration
- *
- * @Hateoas\Relation(
- *     "self",
- *     href = @Hateoas\Route(
- *         "gs_api_get_registration",
- *         parameters = { "registration" = "expr(object.getId())" }
- *     ),
- *     exclusion = @Hateoas\Exclusion(
- *         excludeIf = "expr(not is_granted('view', object))"
- *     )
- * )
- * @Hateoas\Relation(
- *     "cancel",
- *     href = @Hateoas\Route(
- *         "gs_api_cancel_registration",
- *         parameters = { "id" = "expr(object.getId())" }
- *     ),
- *     exclusion = @Hateoas\Exclusion(
- *         excludeIf = "expr(not is_granted('cancel', object))"
- *     )
- * )
- * @Hateoas\Relation(
- *     "edit",
- *     href = @Hateoas\Route(
- *         "gs_api_edit_registration",
- *         parameters = { "registration" = "expr(object.getId())" }
- *     ),
- *     exclusion = @Hateoas\Exclusion(
- *         excludeIf = "expr(not is_granted('edit', object))"
- *     )
- * )
  *
  * @ORM\Entity(repositoryClass="GS\StructureBundle\Repository\RegistrationRepository")
  * @UniqueEntity(

@@ -4,63 +4,12 @@ namespace GS\StructureBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Hateoas\Configuration\Annotation as Hateoas;
 use JMS\Serializer\Annotation\Type;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Year
  *
- * @Hateoas\Relation(
- *     "self",
- *     href = @Hateoas\Route(
- *         "gs_api_get_year",
- *         parameters = { "year" = "expr(object.getId())" }
- *     ),
- *     exclusion = @Hateoas\Exclusion(
- *         excludeIf = "expr(not is_granted('view', object))"
- *     )
- * )
- * @Hateoas\Relation(
- *     "edit",
- *     href = @Hateoas\Route(
- *         "gs_api_edit_year",
- *         parameters = { "year" = "expr(object.getId())" }
- *     ),
- *     exclusion = @Hateoas\Exclusion(
- *         excludeIf = "expr(not is_granted('edit', object))"
- *     )
- * )
- * @Hateoas\Relation(
- *     "remove",
- *     href = @Hateoas\Route(
- *         "gs_api_remove_year",
- *         parameters = { "year" = "expr(object.getId())" }
- *     ),
- *     exclusion = @Hateoas\Exclusion(
- *         excludeIf = "expr(not is_granted('delete', object))"
- *     )
- * )
- * @Hateoas\Relation(
- *     "new_activity",
- *     href = @Hateoas\Route(
- *         "gs_api_new_year_activity",
- *         parameters = { "year" = "expr(object.getId())" }
- *     ),
- *     exclusion = @Hateoas\Exclusion(
- *         excludeIf = "expr(not is_granted(['ROLE_ORGANIZER']))"
- *     )
- * )
- * @Hateoas\Relation(
- *     "members",
- *     href = @Hateoas\Route(
- *         "gs_api_get_year_members",
- *         parameters = { "year" = "expr(object.getId())" }
- *     ),
- *     exclusion = @Hateoas\Exclusion(
- *         excludeIf = "expr(not is_granted(['ROLE_SECRETARY']))"
- *     )
- * )
  * @ORM\Entity(repositoryClass="GS\StructureBundle\Repository\YearRepository")
  */
 class Year

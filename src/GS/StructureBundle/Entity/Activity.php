@@ -4,7 +4,6 @@ namespace GS\StructureBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-use Hateoas\Configuration\Annotation as Hateoas;
 use JMS\Serializer\Annotation\Type;
 use Lexik\Bundle\MailerBundle\Entity\Layout;
 use Lexik\Bundle\MailerBundle\Entity\LayoutTranslation;
@@ -14,66 +13,6 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
 /**
  * Activity
  *
- * @Hateoas\Relation(
- *     "self",
- *     href = @Hateoas\Route(
- *         "gs_api_get_activity",
- *         parameters = { "activity" = "expr(object.getId())" }
- *     ),
- *     exclusion = @Hateoas\Exclusion(
- *         excludeIf = "expr(not is_granted('view', object))"
- *     )
- * )
- * @Hateoas\Relation(
- *     "edit",
- *     href = @Hateoas\Route(
- *         "gs_api_edit_activity",
- *         parameters = { "activity" = "expr(object.getId())" }
- *     ),
- *     exclusion = @Hateoas\Exclusion(
- *         excludeIf = "expr(not is_granted('edit', object))"
- *     )
- * )
- * @Hateoas\Relation(
- *     "remove",
- *     href = @Hateoas\Route(
- *         "gs_api_remove_activity",
- *         parameters = { "activity" = "expr(object.getId())" }
- *     ),
- *     exclusion = @Hateoas\Exclusion(
- *         excludeIf = "expr(not is_granted('delete', object))"
- *     )
- * )
- * @Hateoas\Relation(
- *     "new_topic",
- *     href = @Hateoas\Route(
- *         "gs_api_new_activity_topic",
- *         parameters = { "activity" = "expr(object.getId())" }
- *     ),
- *     exclusion = @Hateoas\Exclusion(
- *         excludeIf = "expr(not is_granted('edit', object))"
- *     )
- * )
- * @Hateoas\Relation(
- *     "new_category",
- *     href = @Hateoas\Route(
- *         "gs_api_new_activity_category",
- *         parameters = { "activity" = "expr(object.getId())" }
- *     ),
- *     exclusion = @Hateoas\Exclusion(
- *         excludeIf = "expr(not is_granted('edit', object))"
- *     )
- * )
- * @Hateoas\Relation(
- *     "new_discount",
- *     href = @Hateoas\Route(
- *         "gs_api_new_activity_discount",
- *         parameters = { "activity" = "expr(object.getId())" }
- *     ),
- *     exclusion = @Hateoas\Exclusion(
- *         excludeIf = "expr(not is_granted('edit', object))"
- *     )
- * )
  * @ORM\Entity(repositoryClass="GS\StructureBundle\Repository\ActivityRepository")
  */
 class Activity
